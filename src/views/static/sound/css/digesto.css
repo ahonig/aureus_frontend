@@ -1,0 +1,13 @@
+.btn-primary {
+    background-color: #129077 !important;
+    border-color: #0e745f !important;
+}
+
+.txt-color-primary {
+    color: #129077 !important;
+}
+
+.smart-form .checkbox input:checked+i,.smart-form .radio input:checked+i,.smart-form .toggle input:checked+i {
+    border-color: #129077
+}
+

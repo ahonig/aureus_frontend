@@ -1,0 +1,424 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-fw fa-list"></i> 
+					Sequências 
+				<span data-i18n-key="BorrarSequencias">> 
+				 	Borrar Sequências
+				</span>
+			</h1>
+		</div>
+    </div>
+    
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+		<% if ( typeof sequencia == 'undefined' ) { %> 
+
+		<div class="alert alert-warning alert-block">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4 class="alert-heading">Error!</h4>
+			   <%=	(typeof err !== 'undefined' ? err : '' ) %>
+			</div> 
+
+		<% } %>
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                        <h2 data-i18n-key="CompleteFormulario">Complete el formulario </h2>				
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox">
+                        </div>
+                        <div class="widget-body no-padding">
+                            <form id="add-form" class="smart-form" novalidate="novalidate" method="POST" autocomplete="off">
+                                <fieldset>
+                                    <section>
+                                        <label class="input">
+                                            <input type="text" name="hospedeiro" placeholder="hospedeiro" value="<%= (typeof sequencia !== 'undefined' ? sequencia.hospedeiro : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o nome do Hospedeiro</b> </label>
+                                    </section>
+				    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="estado" readonly>
+                                                    <option value="GENE" <%= (typeof sequencia !== 'undefined' && sequencia.estado=='GENE') ? 'selected=""': '' %> data-i18n-key="Generada">Generada</option>
+                                                    <option value="IMAG" <%= (typeof sequencia !== 'undefined' && sequencia.estado=='IMAG') ? 'selected=""': '' %> data-i18n-key="ComImagen">Com Imagen</option>
+                                                    <option value="PROC" <%= (typeof sequencia !== 'undefined' && sequencia.estado=='PROC') ? 'selected=""': '' %> data-i18n-key="Procesada">Procesada</option>
+                                                    <option value="QUAL" <%= (typeof sequencia !== 'undefined' && sequencia.estado=='QUAL') ? 'selected=""': '' %> data-i18n-key="Qualidade">Qualidade analisada</option>
+						   
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+				    <section>
+                                        <label class="input">
+                                            <input type="text" name="origenId" placeholder="Cod. do Origen" value="<%= (typeof sequencia !== 'undefined' ? sequencia.origenId : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o Codigo da Sequencia</b> </label>
+                                    </section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="mostraId" placeholder="Cod. da Amostra" value="<%= (typeof sequencia !== 'undefined' ? sequencia.mostraId : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o Codigo da Sequencia</b> </label>
+                                    </section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="microorganismoIdSuspeito" placeholder="Cod. do MicroOrganismo" value="<%= (typeof sequencia !== 'undefined' ? sequencia.microorganismoIdSuspeito : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o Codigo do MicroOrganismo</b> </label>
+                                    </section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="dataColecta" placeholder="DataColecta" value="<%= (typeof sequencia !== 'undefined' ? sequencia.dataColecta : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o Codigo do MicroOrganismo</b> </label>
+                                    </section>
+									<section>
+										<div class="form-group">
+											<select name="codigoPais" readonly> 
+												<option value="" selected="" disabled="">Pais</option>
+												<option value="AFG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AFG') ? 'selected=""': '' %>>Afghanistan</option>
+												<option value="ALB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ALB') ? 'selected=""': '' %>>Albania</option>
+												<option value="DEU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='DEU') ? 'selected=""': '' %>>Germany</option>
+												<option value="DZA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='DZA') ? 'selected=""': '' %>>Algeria</option>
+												<option value="AND" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AND') ? 'selected=""': '' %>>Andorra</option>
+												<option value="AGO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AGO') ? 'selected=""': '' %>>Angola</option>
+												<option value="AIA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AIA') ? 'selected=""': '' %>>Anguilla</option>
+												<option value="ATA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ATA') ? 'selected=""': '' %>>Antarctica</option>
+												<option value="ATG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ATG') ? 'selected=""': '' %>>Antigua and Barbuda</option>
+												<option value="ANT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ANT') ? 'selected=""': '' %>>Netherlands Antilles</option>
+												<option value="SAU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SAU') ? 'selected=""': '' %>>Saudi Arabia</option>
+												<option value="ARG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ARG') ? 'selected=""': '' %>>Argentina</option>
+												<option value="ARM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ARM') ? 'selected=""': '' %>>Armenia</option>
+												<option value="ABW" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ABW') ? 'selected=""': '' %>>Aruba</option>
+												<option value="AUS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AUS') ? 'selected=""': '' %>>Australia</option>
+												<option value="AUT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AUT') ? 'selected=""': '' %>>Austria</option>
+												<option value="AZE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='AZE') ? 'selected=""': '' %>>Azerbaijan</option>
+												<option value="BEL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BEL') ? 'selected=""': '' %>>Belgium</option>
+												<option value="BHS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BHS') ? 'selected=""': '' %>>Bahamas</option>
+												<option value="BHR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BHR') ? 'selected=""': '' %>>Bahrain</option>
+												<option value="BGD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BGD') ? 'selected=""': '' %>>Bangladesh</option>
+												<option value="BRB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BRB') ? 'selected=""': '' %>>Barbados</option>
+												<option value="BLZ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BLZ') ? 'selected=""': '' %>>Belize</option>
+												<option value="BEN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BEN') ? 'selected=""': '' %>>Benin</option>
+												<option value="BTN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BTN') ? 'selected=""': '' %>>Bhutan</option>
+												<option value="BLR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BLR') ? 'selected=""': '' %>>Belarus</option>
+												<option value="MMR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MMR') ? 'selected=""': '' %>>Myanmar</option>
+												<option value="BOL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BOL') ? 'selected=""': '' %>>Bolivia</option>
+												<option value="BIH" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BIH') ? 'selected=""': '' %>>Bosnia and Herzegovina</option>
+												<option value="BWA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BWA') ? 'selected=""': '' %>>Botswana</option>
+												<option value="BRA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BRA') ? 'selected=""': '' %>>Brazil</option>
+												<option value="BRN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BRN') ? 'selected=""': '' %>>Brunei</option>
+												<option value="BGR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BGR') ? 'selected=""': '' %>>Bulgaria</option>
+												<option value="BFA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BFA') ? 'selected=""': '' %>>Burkina Faso</option>
+												<option value="BDI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BDI') ? 'selected=""': '' %>>Burundi</option>
+												<option value="CPV" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CPV') ? 'selected=""': '' %>>Cape Verde</option>
+												<option value="KHM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KHM') ? 'selected=""': '' %>>Cambodia</option>
+												<option value="CMR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CMR') ? 'selected=""': '' %>>Cameroon</option>
+												<option value="CAN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CAN') ? 'selected=""': '' %>>Canada</option>
+												<option value="TCD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TCD') ? 'selected=""': '' %>>Chad</option>
+												<option value="CHL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CHL') ? 'selected=""': '' %>>Chile</option>
+												<option value="CHN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CHN') ? 'selected=""': '' %>>China</option>
+												<option value="CYP" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CYP') ? 'selected=""': '' %>>Cyprus</option>
+												<option value="VAT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VAT') ? 'selected=""': '' %>>Vatican City State</option>
+												<option value="COL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='COL') ? 'selected=""': '' %>>Colombia</option>
+												<option value="COM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='COM') ? 'selected=""': '' %>>Comoros</option>
+												<option value="COG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='COG') ? 'selected=""': '' %>>Congo</option>
+												<option value="COD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='COD') ? 'selected=""': '' %>>Congo</option>
+												<option value="PRK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PRK') ? 'selected=""': '' %>>North Korea</option>
+												<option value="KOR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KOR') ? 'selected=""': '' %>>South Korea</option>
+												<option value="CIV" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CIV') ? 'selected=""': '' %>>Ivory Coast</option>
+												<option value="CRI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CRI') ? 'selected=""': '' %>>Costa Rica</option>
+												<option value="HRV" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='HRV') ? 'selected=""': '' %>>Croatia</option>
+												<option value="CUB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CUB') ? 'selected=""': '' %>>Cuba</option>
+												<option value="DNK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='DNK') ? 'selected=""': '' %>>Denmark</option>
+												<option value="DMA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='DMA') ? 'selected=""': '' %>>Dominica</option>
+												<option value="ECU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ECU') ? 'selected=""': '' %>>Ecuador</option>
+												<option value="EGY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='EGY') ? 'selected=""': '' %>>Egypt</option>
+												<option value="SLV" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SLV') ? 'selected=""': '' %>>El Salvador</option>
+												<option value="ARE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ARE') ? 'selected=""': '' %>>United Arab Emirates</option>
+												<option value="ERI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ERI') ? 'selected=""': '' %>>Eritrea</option>
+												<option value="SVK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SVK') ? 'selected=""': '' %>>Slovakia</option>
+												<option value="SVN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SVN') ? 'selected=""': '' %>>Slovenia</option>
+												<option value="ESP" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ESP') ? 'selected=""': '' %>>Spain</option>
+												<option value="USA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='USA') ? 'selected=""': '' %>>United States of America</option>
+												<option value="EST" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='EST') ? 'selected=""': '' %>>Estonia</option>
+												<option value="ETH" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ETH') ? 'selected=""': '' %>>Ethiopia</option>
+												<option value="PHL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PHL') ? 'selected=""': '' %>>Philippines</option>
+												<option value="FIN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='FIN') ? 'selected=""': '' %>>Finland</option>
+												<option value="FJI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='FJI') ? 'selected=""': '' %>>Fiji</option>
+												<option value="FRA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='FRA') ? 'selected=""': '' %>>France</option>
+												<option value="GAB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GAB') ? 'selected=""': '' %>>Gabon</option>
+												<option value="GMB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GMB') ? 'selected=""': '' %>>Gambia</option>
+												<option value="GEO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GEO') ? 'selected=""': '' %>>Georgia</option>
+												<option value="GHA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GHA') ? 'selected=""': '' %>>Ghana</option>
+												<option value="GIB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GIB') ? 'selected=""': '' %>>Gibraltar</option>
+												<option value="GRD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GRD') ? 'selected=""': '' %>>Grenada</option>
+												<option value="GRC" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GRC') ? 'selected=""': '' %>>Greece</option>
+												<option value="GRL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GRL') ? 'selected=""': '' %>>Greenland</option>
+												<option value="GLP" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GLP') ? 'selected=""': '' %>>Guadeloupe</option>
+												<option value="GUM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GUM') ? 'selected=""': '' %>>Guam</option>
+												<option value="GTM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GTM') ? 'selected=""': '' %>>Guatemala</option>
+												<option value="GUF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GUF') ? 'selected=""': '' %>>French Guiana</option>
+												<option value="GGY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GGY') ? 'selected=""': '' %>>Guernsey</option>
+												<option value="GIN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GIN') ? 'selected=""': '' %>>Guinea</option>
+												<option value="GNQ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GNQ') ? 'selected=""': '' %>>Equatorial Guinea</option>
+												<option value="GNB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GNB') ? 'selected=""': '' %>>Guinea-Bissau</option>
+												<option value="GUY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GUY') ? 'selected=""': '' %>>Guyana</option>
+												<option value="HTI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='HTI') ? 'selected=""': '' %>>Haiti</option>
+												<option value="HND" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='HND') ? 'selected=""': '' %>>Honduras</option>
+												<option value="HKG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='HKG') ? 'selected=""': '' %>>Hong Kong</option>
+												<option value="HUN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='HUN') ? 'selected=""': '' %>>Hungary</option>
+												<option value="IND" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IND') ? 'selected=""': '' %>>India</option>
+												<option value="IDN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IDN') ? 'selected=""': '' %>>Indonesia</option>
+												<option value="IRN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IRN') ? 'selected=""': '' %>>Iran</option>
+												<option value="IRQ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IRQ') ? 'selected=""': '' %>>Iraq</option>
+												<option value="IRL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IRL') ? 'selected=""': '' %>>Ireland</option>
+												<option value="BVT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BVT') ? 'selected=""': '' %>>Bouvet Island</option>
+												<option value="IMN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IMN') ? 'selected=""': '' %>>Isle of Man</option>
+												<option value="CXR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CXR') ? 'selected=""': '' %>>Christmas Island</option>
+												<option value="NFK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NFK') ? 'selected=""': '' %>>Norfolk Island</option>
+												<option value="ISL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ISL') ? 'selected=""': '' %>>Iceland</option>
+												<option value="BMU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BMU') ? 'selected=""': '' %>>Bermuda Islands</option>
+												<option value="CYM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CYM') ? 'selected=""': '' %>>Cayman Islands</option>
+												<option value="CCK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CCK') ? 'selected=""': '' %>>Cocos (Keeling) Islands</option>
+												<option value="COK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='COK') ? 'selected=""': '' %>>Cook Islands</option>
+												<option value="ALA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ALA') ? 'selected=""': '' %>>Ã…land Islands</option>
+												<option value="FRO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='FRO') ? 'selected=""': '' %>>Faroe Islands</option>
+												<option value="SGS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SGS') ? 'selected=""': '' %>>South Georgia and the South Sandwich Islands</option>
+												<option value="HMD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='HMD') ? 'selected=""': '' %>>Heard Island and McDonald Islands</option>
+												<option value="MDV" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MDV') ? 'selected=""': '' %>>Maldives</option>
+												<option value="FLK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='FLK') ? 'selected=""': '' %>>Falkland Islands (Malvinas)</option>
+												<option value="MNP" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MNP') ? 'selected=""': '' %>>Northern Mariana Islands</option>
+												<option value="MHL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MHL') ? 'selected=""': '' %>>Marshall Islands</option>
+												<option value="PCN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PCN') ? 'selected=""': '' %>>Pitcairn Islands</option>
+												<option value="SLB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SLB') ? 'selected=""': '' %>>Solomon Islands</option>
+												<option value="TCA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TCA') ? 'selected=""': '' %>>Turks and Caicos Islands</option>
+												<option value="UMI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='UMI') ? 'selected=""': '' %>>United States Minor Outlying Islands</option>
+												<option value="VG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VG') ? 'selected=""': '' %>>Virgin Islands</option>
+												<option value="VIR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VIR') ? 'selected=""': '' %>>United States Virgin Islands</option>
+												<option value="ISR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ISR') ? 'selected=""': '' %>>Israel</option>
+												<option value="ITA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ITA') ? 'selected=""': '' %>>Italy</option>
+												<option value="JAM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='JAM') ? 'selected=""': '' %>>Jamaica</option>
+												<option value="JPN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='JPN') ? 'selected=""': '' %>>Japan</option>
+												<option value="JEY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='JEY') ? 'selected=""': '' %>>Jersey</option>
+												<option value="JOR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='JOR') ? 'selected=""': '' %>>Jordan</option>
+												<option value="KAZ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KAZ') ? 'selected=""': '' %>>Kazakhstan</option>
+												<option value="KEN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KEN') ? 'selected=""': '' %>>Kenya</option>
+												<option value="KGZ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KGZ') ? 'selected=""': '' %>>Kyrgyzstan</option>
+												<option value="KIR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KIR') ? 'selected=""': '' %>>Kiribati</option>
+												<option value="KWT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KWT') ? 'selected=""': '' %>>Kuwait</option>
+												<option value="LBN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LBN') ? 'selected=""': '' %>>Lebanon</option>
+												<option value="LAO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LAO') ? 'selected=""': '' %>>Laos</option>
+												<option value="LSO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LSO') ? 'selected=""': '' %>>Lesotho</option>
+												<option value="LVA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LVA') ? 'selected=""': '' %>>Latvia</option>
+												<option value="LBR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LBR') ? 'selected=""': '' %>>Liberia</option>
+												<option value="LBY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LBY') ? 'selected=""': '' %>>Libya</option>
+												<option value="LIE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LIE') ? 'selected=""': '' %>>Liechtenstein</option>
+												<option value="LTU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LTU') ? 'selected=""': '' %>>Lithuania</option>
+												<option value="LUX" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LUX') ? 'selected=""': '' %>>Luxembourg</option>
+												<option value="MEX" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MEX') ? 'selected=""': '' %>>Mexico</option>
+												<option value="MCO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MCO') ? 'selected=""': '' %>>Monaco</option>
+												<option value="MAC" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MAC') ? 'selected=""': '' %>>Macao</option>
+												<option value="MKD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MKD') ? 'selected=""': '' %>>Macedonia</option>
+												<option value="MDG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MDG') ? 'selected=""': '' %>>Madagascar</option>
+												<option value="MYS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MYS') ? 'selected=""': '' %>>Malaysia</option>
+												<option value="MWI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MWI') ? 'selected=""': '' %>>Malawi</option>
+												<option value="MLI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MLI') ? 'selected=""': '' %>>Mali</option>
+												<option value="MLT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MLT') ? 'selected=""': '' %>>Malta</option>
+												<option value="MAR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MAR') ? 'selected=""': '' %>>Morocco</option>
+												<option value="MTQ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MTQ') ? 'selected=""': '' %>>Martinique</option>
+												<option value="MUS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MUS') ? 'selected=""': '' %>>Mauritius</option>
+												<option value="MRT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MRT') ? 'selected=""': '' %>>Mauritania</option>
+												<option value="MYT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MYT') ? 'selected=""': '' %>>Mayotte</option>
+												<option value="FSM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='FSM') ? 'selected=""': '' %>>Estados Federados de</option>
+												<option value="MDA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MDA') ? 'selected=""': '' %>>Moldova</option>
+												<option value="MNG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MNG') ? 'selected=""': '' %>>Mongolia</option>
+												<option value="MNE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MNE') ? 'selected=""': '' %>>Montenegro</option>
+												<option value="MSR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MSR') ? 'selected=""': '' %>>Montserrat</option>
+												<option value="MOZ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MOZ') ? 'selected=""': '' %>>Mozambique</option>
+												<option value="NAM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NAM') ? 'selected=""': '' %>>Namibia</option>
+												<option value="NRU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NRU') ? 'selected=""': '' %>>Nauru</option>
+												<option value="NPL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NPL') ? 'selected=""': '' %>>Nepal</option>
+												<option value="NIC" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NIC') ? 'selected=""': '' %>>Nicaragua</option>
+												<option value="NER" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NER') ? 'selected=""': '' %>>Niger</option>
+												<option value="NGA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NGA') ? 'selected=""': '' %>>Nigeria</option>
+												<option value="NIU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NIU') ? 'selected=""': '' %>>Niue</option>
+												<option value="NOR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NOR') ? 'selected=""': '' %>>Norway</option>
+												<option value="NCL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NCL') ? 'selected=""': '' %>>New Caledonia</option>
+												<option value="NZL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NZL') ? 'selected=""': '' %>>New Zealand</option>
+												<option value="OMN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='OMN') ? 'selected=""': '' %>>Oman</option>
+												<option value="NLD" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='NLD') ? 'selected=""': '' %>>Netherlands</option>
+												<option value="PAK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PAK') ? 'selected=""': '' %>>Pakistan</option>
+												<option value="PLW" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PLW') ? 'selected=""': '' %>>Palau</option>
+												<option value="PSE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PSE') ? 'selected=""': '' %>>Palestine</option>
+												<option value="PAN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PAN') ? 'selected=""': '' %>>Panama</option>
+												<option value="PNG" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PNG') ? 'selected=""': '' %>>Papua New Guinea</option>
+												<option value="PRY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PRY') ? 'selected=""': '' %>>Paraguay</option>
+												<option value="PER" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PER') ? 'selected=""': '' %>>Peru</option>
+												<option value="PYF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PYF') ? 'selected=""': '' %>>French Polynesia</option>
+												<option value="POL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='POL') ? 'selected=""': '' %>>Poland</option>
+												<option value="PRT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PRT') ? 'selected=""': '' %>>Portugal</option>
+												<option value="PRI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='PRI') ? 'selected=""': '' %>>Puerto Rico</option>
+												<option value="QAT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='QAT') ? 'selected=""': '' %>>Qatar</option>
+												<option value="GBR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='GBR') ? 'selected=""': '' %>>United Kingdom</option>
+												<option value="CAF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CAF') ? 'selected=""': '' %>>Central African Republic</option>
+												<option value="CZE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CZE') ? 'selected=""': '' %>>Czech Republic</option>
+												<option value="DOM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='DOM') ? 'selected=""': '' %>>Dominican Republic</option>
+												<option value="REU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='REU') ? 'selected=""': '' %>>RÃ©union</option>
+												<option value="RWA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='RWA') ? 'selected=""': '' %>>Rwanda</option>
+												<option value="ROU" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ROU') ? 'selected=""': '' %>>Romania</option>
+												<option value="RUS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='RUS') ? 'selected=""': '' %>>Russia</option>
+												<option value="ESH" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ESH') ? 'selected=""': '' %>>Western Sahara</option>
+												<option value="WSM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='WSM') ? 'selected=""': '' %>>Samoa</option>
+												<option value="ASM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ASM') ? 'selected=""': '' %>>American Samoa</option>
+												<option value="BLM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='BLM') ? 'selected=""': '' %>>Saint BarthÃ©lemy</option>
+												<option value="KNA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='KNA') ? 'selected=""': '' %>>Saint Kitts and Nevis</option>
+												<option value="SMR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SMR') ? 'selected=""': '' %>>San Marino</option>
+												<option value="MAF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='MAF') ? 'selected=""': '' %>>Saint Martin (French part)</option>
+												<option value="SPM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SPM') ? 'selected=""': '' %>>Saint Pierre and Miquelon</option>
+												<option value="VCT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VCT') ? 'selected=""': '' %>>Saint Vincent and the Grenadines</option>
+												<option value="SHN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SHN') ? 'selected=""': '' %>>AscensiÃ³n y TristÃ¡n de AcuÃ±a</option>
+												<option value="LCA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LCA') ? 'selected=""': '' %>>Saint Lucia</option>
+												<option value="STP" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='STP') ? 'selected=""': '' %>>Sao Tome and Principe</option>
+												<option value="SEN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SEN') ? 'selected=""': '' %>>Senegal</option>
+												<option value="SRB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SRB') ? 'selected=""': '' %>>Serbia</option>
+												<option value="SYC" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SYC') ? 'selected=""': '' %>>Seychelles</option>
+												<option value="SLE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SLE') ? 'selected=""': '' %>>Sierra Leone</option>
+												<option value="SGP" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SGP') ? 'selected=""': '' %>>Singapore</option>
+												<option value="SYR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SYR') ? 'selected=""': '' %>>Syria</option>
+												<option value="SOM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SOM') ? 'selected=""': '' %>>Somalia</option>
+												<option value="LKA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='LKA') ? 'selected=""': '' %>>Sri Lanka</option>
+												<option value="ZAF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ZAF') ? 'selected=""': '' %>>South Africa</option>
+												<option value="SDN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SDN') ? 'selected=""': '' %>>Sudan</option>
+												<option value="SWE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SWE') ? 'selected=""': '' %>>Sweden</option>
+												<option value="CHE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='CHE') ? 'selected=""': '' %>>Switzerland</option>
+												<option value="SUR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SUR') ? 'selected=""': '' %>>Suriname</option>
+												<option value="SJM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SJM') ? 'selected=""': '' %>>Svalbard and Jan Mayen</option>
+												<option value="SWZ" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='SWZ') ? 'selected=""': '' %>>Swaziland</option>
+												<option value="TJK" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TJK') ? 'selected=""': '' %>>Tajikistan</option>
+												<option value="THA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='THA') ? 'selected=""': '' %>>Thailand</option>
+												<option value="TWN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TWN') ? 'selected=""': '' %>>Taiwan</option>
+												<option value="TZA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TZA') ? 'selected=""': '' %>>Tanzania</option>
+												<option value="IOT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='IOT') ? 'selected=""': '' %>>British Indian Ocean Territory</option>
+												<option value="ATF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ATF') ? 'selected=""': '' %>>French Southern Territories</option>
+												<option value="TLS" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TLS') ? 'selected=""': '' %>>East Timor</option>
+												<option value="TGO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TGO') ? 'selected=""': '' %>>Togo</option>
+												<option value="TKL" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TKL') ? 'selected=""': '' %>>Tokelau</option>
+												<option value="TON" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TON') ? 'selected=""': '' %>>Tonga</option>
+												<option value="TTO" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TTO') ? 'selected=""': '' %>>Trinidad and Tobago</option>
+												<option value="TUN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TUN') ? 'selected=""': '' %>>Tunisia</option>
+												<option value="TKM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TKM') ? 'selected=""': '' %>>Turkmenistan</option>
+												<option value="TUR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TUR') ? 'selected=""': '' %>>Turkey</option>
+												<option value="TUV" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='TUV') ? 'selected=""': '' %>>Tuvalu</option>
+												<option value="UKR" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='UKR') ? 'selected=""': '' %>>Ukraine</option>
+												<option value="UGA" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='UGA') ? 'selected=""': '' %>>Uganda</option>
+												<option value="URY" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='URY') ? 'selected=""': '' %>>Uruguay</option>
+												<option value="UZB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='UZB') ? 'selected=""': '' %>>Uzbekistan</option>
+												<option value="VUT" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VUT') ? 'selected=""': '' %>>Vanuatu</option>
+												<option value="VEN" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VEN') ? 'selected=""': '' %>>Venezuela</option>
+												<option value="VNM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='VNM') ? 'selected=""': '' %>>Vietnam</option>
+												<option value="WLF" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='WLF') ? 'selected=""': '' %>>Wallis and Futuna</option>
+												<option value="YEM" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='YEM') ? 'selected=""': '' %>>Yemen</option>
+												<option value="DJI" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='DJI') ? 'selected=""': '' %>>Djibouti</option>
+												<option value="ZMB" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ZMB') ? 'selected=""': '' %>>Zambia</option>
+												<option value="ZWE" <%= (typeof sequencia !== 'undefined' && sequencia.codigoPais=='ZWE') ? 'selected=""': '' %>>Zimbabwe</option>
+											</select>
+										</div>
+									</section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="cidade" placeholder="Cidade" value="<%= (typeof sequencia !== 'undefined' ? sequencia.cidade : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o nome da Cidade</b> </label>
+                                    </section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="sequenciadorId" placeholder="Sequenciador" value="<%= (typeof sequencia !== 'undefined' ? sequencia.sequenciadorId : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o codigo do sequenciador</b> </label>
+                                    </section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="servicoSaudeId" placeholder="Servico de Saude" value="<%= (typeof sequencia !== 'undefined' ? sequencia.servicoSaudeId : '' ) %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o codigo do servico de saude</b> </label>
+                                    </section>
+									
+									
+									
+                                </fieldset>
+                                <footer>
+                                    <button type="submit" class="btn btn-primary" data-i18n-key="Eliminar">
+                                        Eliminar
+                                    </button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+</div>
+<%- include ('partials/_bodyBottom'); %>	
+
+<script src="/sgbmi/js/plugin/jquery-form/jquery-form.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+	pageSetUp();
+        var errorClass = 'invalid';
+			var errorElement = 'em';
+			
+			var $addUserForm = $('#add-form').validate({
+				errorClass	: errorClass,
+				errorElement	: errorElement,
+				highlight: function(element) {
+			        $(element).parent().removeClass('state-success').addClass("state-error");
+			        $(element).removeClass('valid');
+			    },
+			    unhighlight: function(element) {
+			        $(element).parent().removeClass("state-error").addClass('state-success');
+			        $(element).addClass('valid');
+			    },
+
+			// Rules for form validation
+				rules : {
+					estado: { required: true}
+					,origenId: { digits: true, required: true}
+					,mostraId: { digits: true, required: true}
+					,microorganismoIdSuspeito: { digits: true, required: true}
+					,dataColecta: { required: true}
+					,codigoPais: { required: true}
+					,cidade: { required: true}
+					,sequenciadorId: { digits: true, required: true}
+					,servicoSaudeId: { digits: true, required: true}
+				},
+		
+				messages : {
+					estado: { required: "O estado e obligatorio"}
+					,origenId: { digits: "O codigo do origen deve ser numerico", required: "O codigo do origen e obligatorio"}
+					,mostraId: { digits: "O codigo da amostra deve ser numerico", required: "O codigo da amostra e obligatorio"}
+					,microorganismoIdSuspeito: { digits: "O codigo do MicroOrganismo deve ser numerico", required: "O codigo do MicroOrganismo e obligatorio"}
+					,dataColecta: { required: "A data Colecta e obligatoria"}
+					,codigoPais: { required: "O codigo do pais e obligatorio"}
+					,cidade: { required: "A cidade e obligatorio"}
+					,sequenciadorId: { digits: "O codigo do origen deve ser numerico", required: "O codigo do sequenciador e obligatorio"}
+					,servicoSaudeId: { digits: "O codigo do origen deve ser numerico", required: "O codigo do servico de saude e obligatorio"}
+				},
+		
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.parent());
+				}
+			});
+
+	
+		$("[name='hospedeiro']").get(0).focus();
+	
+	});
+	
+</script>
+<%- include ('partials/_footer'); %>

@@ -1,0 +1,177 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-fw fa-user"></i> 
+					Seguridade
+				<span>> 
+					Atualizar Usu&aacute;rios
+				</span>
+			</h1>
+		</div>
+    </div>
+    
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                        <h2>Complete el formulario </h2>				
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox">
+                        </div>
+                        <div class="widget-body no-padding">
+                            <form id="addUser-form" class="smart-form" novalidate="novalidate" method="POST">
+                                <fieldset>
+                                    <section>
+                                        <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <input type="text" name="usuario" placeholder="Usuario" value="<%= usuario.usuario %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese seu usuario</b> </label>
+                                    </section>
+				   <section>
+                                        <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <input type="text" name="email" placeholder="Email" value="<%= usuario.email %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese seu email</b> </label>
+                                    </section>
+                                    <section>
+                                        <label class="input">
+                                            <input type="text" name="nome" placeholder="Nombre completo" value="<%= usuario.nome %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese seu nombre</b> </label>
+                                    </section>
+				    <section>
+                                        <label class="input">
+                                            <input type="text" name="institucao" placeholder="Institucion" value="<%= usuario.institucao %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese sua institucao</b> </label>
+                                    </section>
+				    <section>
+                                        <label class="input">
+                                            <input type="text" name="posicao" placeholder="Posicao" value="<%= usuario.posicao %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese sua posicao</b> </label>
+                                    </section>
+                                    <section>
+                                        <label class="input">
+                                            <input type="text" name="interesse" placeholder="Interesse" value="<%= usuario.interesse %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese seu interesse</b> </label>
+                                    </section>
+
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="tipo">
+                                                    <option value="" disabled="">Tipo</option>
+                                                    <option value="OPER" <%= (usuario.tipo=='OPER') ? 'selected=""': '' %> >Operador</option>
+                                                    <option value="ADMI" <%= (usuario.tipo=='ADMI') ? 'selected=""': '' %> >Admin</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="estado">
+                                                    <option value="" disabled="">Estado</option>
+                                                    <option value="ACTI" <%= (usuario.estado=='ACTI') ? 'selected=""': '' %> >Activo</option>
+                                                    <option value="INAC" <%= (usuario.estado=='INAC' || usuario.estado=='PEND' ) ? 'selected=""': '' %> >Inactivo</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+                                    <section>
+                                        <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                            <input type="password" name="senha" placeholder="Ingrese seu senha" value="<%= usuario.senha %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese seu senha</b> </label>
+                                    </section>
+                                </fieldset>
+                                <footer>
+                                    <button type="submit" class="btn btn-primary">
+                                        Actualizar
+                                    </button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+<%- include ('partials/_bodyBottom'); %>	
+
+<script src="/sgbmi/js/plugin/jquery-form/jquery-form.min.js"></script>
+<script>
+	$(document).ready(function() {
+	
+	
+		pageSetUp();
+        var errorClass = 'invalid';
+			var errorElement = 'em';
+			
+			var $addUserForm = $('#addUser-form').validate({
+				errorClass		: errorClass,
+				errorElement	: errorElement,
+				highlight: function(element) {
+			        $(element).parent().removeClass('state-success').addClass("state-error");
+			        $(element).removeClass('valid');
+			    },
+			    unhighlight: function(element) {
+			        $(element).parent().removeClass("state-error").addClass('state-success');
+			        $(element).addClass('valid');
+			    },
+
+			// Rules for form validation
+				rules : {
+					usuario : {
+						required : true
+					},
+					email : {
+                                                required : true,
+						email: true
+                                        },
+					nome : {
+						required : true
+					},
+					tipo : {
+						required : true
+					},
+					estado : {
+						required : true
+					},
+					senha : {
+						required : true
+					}
+				},
+		
+				messages : {
+					usuario : {
+						required : 'Por favor ingrese el usuario'
+					},
+					email : {
+                                                required : "Escreva seu email",
+						email: "Deve escrever um email valido"
+                                        },
+					nome : {
+						required : 'Por favor escriba un nombre'
+					},
+					tipo : {
+						required : 'Por favor seleccione el tipo'
+					},
+					estado : {
+						required : 'Por favor seleccione el estado'
+					},
+					senha : {
+						required : 'Por favor ingrese su password'
+					}
+				},
+		
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.parent());
+				}
+			});
+		
+	
+	});
+	
+</script>
+<%- include ('partials/_footer'); %>

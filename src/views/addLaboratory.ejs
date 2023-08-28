@@ -1,0 +1,128 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-fw fa-share-alt"></i> 
+					Configuracoes
+				<span>> 
+					Agregar Laboratorio
+				</span>
+			</h1>
+		</div>
+    </div>
+    
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+		<% if ( typeof laboratorio !== 'undefined' ) { %> 
+
+		<div class="alert alert-warning alert-block">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4 class="alert-heading">Error!</h4>
+			   <%=	(typeof err !== 'undefined' ? err : '' ) %>
+			</div> 
+
+		<% } %>
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                        <h2>Complete el formulario </h2>				
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox">
+                        </div>
+                        <div class="widget-body no-padding">
+                            <form id="add-form" class="smart-form" novalidate="novalidate" method="POST" autocomplete="off">
+                                <fieldset>
+                                    <section>
+                                        <label class="input">
+					    Nome:
+                                            <input type="text" name="nome" placeholder="Nome" value="<%= (typeof laboratorio !== 'undefined' ? laboratorio.nome : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o nome do Laboratorio</b> </label>
+                                    </section>
+
+				   <section>
+                                        <label class="input">
+                                            Abreviatura:
+                                            <input type="text" name="abreviatura" placeholder="Abreviatura" value="<%= (typeof laboratorio !== 'undefined' ? laboratorio.abreviatura : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese a abreviatura do Laboratorio</b> </label>
+                                    </section>
+
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="estado">
+                                                    <option value="" selected="" disabled="">Estado</option>
+                                                    <option value="ACTI" <%= (typeof laboratorio !== 'undefined' && laboratorio.estado=='ACTI') ? 'selected=""': '' %>>Activo</option>
+                                                    <option value="INAC" <%= (typeof laboratorio !== 'undefined' && laboratorio.estado=='INAC') ? 'selected=""': '' %>>Inactivo</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+                                </fieldset>
+                                <footer>
+                                    <button type="submit" class="btn btn-primary">
+                                        Agregar
+                                    </button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+</div>
+<%- include ('partials/_bodyBottom'); %>	
+
+<script src="/sgbmi/js/plugin/jquery-form/jquery-form.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+	pageSetUp();
+        var errorClass = 'invalid';
+			var errorElement = 'em';
+			
+			var $addUserForm = $('#add-form').validate({
+				errorClass	: errorClass,
+				errorElement	: errorElement,
+				highlight: function(element) {
+			        $(element).parent().removeClass('state-success').addClass("state-error");
+			        $(element).removeClass('valid');
+			    },
+			    unhighlight: function(element) {
+			        $(element).parent().removeClass("state-error").addClass('state-success');
+			        $(element).addClass('valid');
+			    },
+
+			// Rules for form validation
+				rules : {
+					nome : { required : true},
+					estado : { required : true },
+				        abreviatura : { required : true }
+				},
+		
+				messages : {
+					nome : { required : 'Por favor escreva seu nome' },
+					estado : {required : 'Por favor escreva o estado' },
+				        abreviatura: { required: 'Por favor escreva a abreviatura' }
+				},
+		
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.parent());
+				}
+			});
+
+	
+		$("[name='nome']").get(0).focus();
+	
+	});
+	
+</script>
+<%- include ('partials/_footer'); %>

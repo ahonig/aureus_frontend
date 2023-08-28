@@ -1,0 +1,51 @@
+<nav>
+	<ul>
+		<li class="<%= ( location.id == 'inicio' ? 'active' : '') %>">
+			<a href="/sgbmi/admin/"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent" data-i18n-key="Inicio">Inicio</span></a>
+        </li>
+		<li class="<%= ( location.parent == 'sequences' ? 'open' : '') %>">
+			<a href="#"><i class="fa fa-lg fa-fw fa-list"></i> <span class="menu-item-parent" data-i18n-key="Sequencias">Sequências</span></a>
+			<ul>
+				<li class="<%= ( location.id == 'sequences' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/sequences" data-i18n-key="Sequencias">Sequências</a>
+				</li>
+				<li class="<%= ( location.id == 'newTask' ? 'active' : '') %>">
+                                        <a href="/sgbmi/admin/sequences/qualityTask/new" data-i18n-key="Tarefas">Tarefas</a>
+                                </li>
+			</ul>
+		</li>
+		<% if ( typeof sess !== 'undefined' && sess.tipo  == 'ADMI' ) { %> 
+        <li class="<%= ( location.parent == 'configurations' ? 'open' : '') %>">
+			<a href="#"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent" data-i18n-key="Configuracoes">Configura&ccedil;oes</span></a>
+			<ul>
+				<li class="<%= ( location.id == 'origins' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/origins"><i class="fa fa-lg fa-fw fa-share-alt"></i><span data-i18n-key="Origens">Origens</span></a>
+				</li>
+				<li class="<%= ( location.id == 'microorganisms' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/microorganisms"><i class="fa fa-lg fa-fw fa-sitemap"></i><span data-i18n-key="Microrganismos">Microorganisms</span></a>
+				</li>
+				<li class="<%= ( location.id == 'services' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/services"><i class="fa fa-lg fa-fw fa-hospital-o"></i><span data-i18n-key="Servicos">Servi&ccedil;os de Saudes</span></a>
+				</li>
+				<li class="<%= ( location.id == 'equipments' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/equipments"><i class="fa fa-lg fa-fw fa-stack-overflow"></i><span data-i18n-key="Equipamentos">Equipamentos Sequenciador</span></a>
+				</li>
+				<li class="<%= ( location.id == 'samples' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/samples"><i class="fa fa-lg fa-fw fa-file-text-o"></i><span data-i18n-key="Amostras">Amostras</span></a>
+				</li>
+				<li class="<%= ( location.id == 'laboratories' ? 'active' : '') %>">
+                                        <a href="/sgbmi/admin/laboratories"><i class="fa fa-lg fa-fw fa-flask"></i><span data-i18n-key="Laboratorios">Laboratorios</span></a>
+                                </li>
+			</ul>
+		</li>
+		<li class="<%= ( location.parent == 'security' ? 'open' : '') %>">
+			<a href="#"><i class="fa fa-lg fa-fw fa-lock"></i> <span class="menu-item-parent" data-i18n-key="Seguridade">Seguridade</span></a>
+			<ul>
+				<li class="<%= ( location.id == 'usuarios' ? 'active' : '') %>">
+					<a href="/sgbmi/admin/users"><i class="fa fa-lg fa-fw fa-user"></i><span data-i18n-key="Users">Usuarios</span></a>
+				</li>
+			</ul>
+		</li>
+		<% } %>
+	</ul>       
+</nav>

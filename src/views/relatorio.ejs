@@ -1,0 +1,144 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<div id="content">
+		<!-- row -->
+		<div class="row">
+
+			<div class="col-sm-12">
+
+				<div class="well">
+								<h1>REPORTS</h1>
+								
+								<div class="alert alert-info">
+									Note: You can see the last report fast of this sequence.
+								</div>
+								<div id="tabs">
+				<ul>
+					<li>
+						<a href="#tabs-a">ANALYSIS RESULT</a>
+					</li>
+					<li>
+						<a href="#tabs-b">VIRULENCE</a>
+					</li>
+				</ul>
+				<div id="tabs-a">
+					<button onclick="exportTableToExcel('tblAnalysis','analysis_<%= relatorio[0].sequenciaId %>')" class="btn btn-primary"> Export table to excel</button>
+					<table class="table table-bordered" id="tblAnalysis">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:5%">Atribute</th>
+                                                                <th style="width:55%">Value</th>
+                                                                <th style="width:40%">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Sequencia Id</td>
+                                                                <td><code><%= relatorio[0].sequenciaId %></code></td>
+                                                                <td>O codigo relacionado com a sequenca.</td>
+                                                            </tr>
+                                                            <tr><td>Completeness</td><td><code><%= relatorio[0].checkm_1 %></code></td><td>Completude</td></tr>
+                                                            <tr><td>Pollution</td><td><code><%= relatorio[0].checkm_2 %></code></td><td>Contaminacao</td></tr>
+                                                            <tr><td>Size</td><td><code><%= relatorio[0].checkm_3 %></code></td><td>Tamanho</td></tr>
+                                                            <tr><td>Contigs</td><td><code><%= relatorio[0].checkm_4 %></code></td><td>Contings</td></tr>
+                                                            <tr><td>Sample</td><td><code><%= relatorio[0].sample %></code></td><td></td></tr>
+                                                            <tr><td>Especie</td><td><code><%= relatorio[0].especie %></code></td><td></td></tr>
+                                                            <tr><td>Gene</td><td><code><%- relatorio[0].gene %></code></td><td>Resitencia</td></tr>
+                                                            <!-- <tr><td>Resfinder</td><td><code><%- relatorio[0].resfinder %></code></td><td></td></tr> -->
+                                                            <tr><td>Plasmid</td><td><code><%- relatorio[0].plasmid %></code></td><td></td></tr>
+                                                            <tr><td>Mlst</td><td><code><%- relatorio[0].mlst %></code></td><td></td></tr>
+                                                            <tr><td>Poli mutacoes</td><td><code><%- relatorio[0].mutacoes_poli %></code></td><td></td></tr>
+                                                            <tr><td>Other mutacoes</td><td><code><%- relatorio[0].mutacoes_outras %></code></td><td></td></tr>
+                                                            <tr><td>Coverage</td><td><code><%- relatorio[0].coverage %></code></td><td></td></tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                             <tr>
+                                                                <td colspan="4">
+                                                                Esses atributos são usados como opções de pipeline individuais. As opções principais podem ser alteradas no próprio relatorio do pipeline. Aviso: os atributos de dados podem ter apenas 1 valor null (veja acima)!
+                                                                </td>
+                                                             </tr>
+                                                        </tfoot>
+                                                    </table>
+				</div>
+				<div id="tabs-b">
+					<button onclick="exportTableToExcel('tblVirulence','virulence_<%= relatorio[0].sequenciaId %>')" class="btn btn-primary"> Export table to excel</button>
+					<table class="table table-bordered" id="tblVirulence">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:5%">Atributo</th>
+                                                                <th style="width:55%">Valor</th>
+                                                                <th style="width:40%">Descripcao</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Sequencia Id</td>
+                                                                <td><code><%= relatorio[0].sequenciaId %></code></td>
+                                                                <td>O codigo relacionado com a sequenca.</td>
+                                                            </tr>
+                                                            <tr><td>VFDB</td><td><code><%- relatorio[0].VFDB %></code></td><td></td></tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                             <tr>
+                                                                <td colspan="4">
+                                                                Esses atributos são usados como opções de pipeline individuais. As opções principais podem ser alteradas no próprio relatorio do pipeline. Aviso: os atributos de dados podem ter apenas 1 valor null (veja acima)!
+                                                                </td>
+                                                             </tr>
+                                                        </tfoot>
+                                                    </table>
+				</div>
+			</div>	
+							
+								
+							</div>
+
+
+
+			</div>
+
+		</div>
+
+		<!-- end row --> 
+</div>
+<%- include ('partials/_bodyBottom'); %>		
+<script>
+	$(document).ready(function() {
+		pageSetUp();
+		$('#tabs').tabs();
+	});
+
+
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+</script>
+<%- include ('partials/_footer'); %>

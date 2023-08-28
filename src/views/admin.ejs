@@ -1,0 +1,575 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<%- include ('partials/_translations'); %>	
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+			<ul id="sparks">
+				<li class="sparks-info">
+                                        <h5> <%- __i18n("Usuarios") %> <span class="txt-color-greenDark"><i class="fa fa-user"></i>&nbsp;<%= (typeof cantidadUsuarios !== 'undefined' && cantidadUsuarios > 0) ? cantidadUsuarios: '0' %></span></h5>
+                                </li>
+				<li class="sparks-info">
+					<h5> <%- __i18n("Sequencias") %> <span class="txt-color-greenDark"><i class="fa fa-list"></i>&nbsp;<%= (typeof cantidadTotal !== 'undefined' && cantidadTotal > 0) ? cantidadTotal: '0' %></span></h5>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<% if ( typeof sess !== 'undefined' && sess.tipo  == 'OPER' ) { %> 
+		<!-- row -->
+		<div class="row">
+
+			<div class="col-sm-12">
+
+				<div class="well">
+
+					<table class="table table-striped table-forum">
+						<thead>
+							<tr>
+								<th colspan="2" data-i18n-key="Tarefas">Tarefas</th>
+								<th class="text-center hidden-xs hidden-sm" style="width: 100px;" data-i18n-key="Quantidade">Quantidade</th>
+								<th class="hidden-xs hidden-sm" style="width: 200px;" data-i18n-key="UltimaAtualizacao">Ult. atualização</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<!-- TR -->
+							<tr>
+								<td class="text-center" style="width: 40px;"><i class="fa fa-list fa-2x text-muted"></i></td>
+								<td>
+									<h4><a href="/sgbmi/admin/sequences/add/">
+										<span data-i18n-key="SubirSequencias">Subir Sequências</span>
+									</a>
+										<small data-i18n-key="SubirSequenciasObs">Aqui você pode carregar novas sequências</small>
+									</h4>
+								</td>
+								<td class="text-center hidden-xs hidden-sm">
+									<a href="javascript:void(0);"><%= cantidadTotal %></a>
+								</td>
+								<td class="hidden-xs hidden-sm">
+									<small><i data-i18n-key="Nunca">Nunca</i></small>
+								</td>
+							</tr>
+							<!-- end TR -->
+							
+							<!-- TR -->
+							<tr>
+								<td class="text-center" style="width: 40px;"><i class="fa fa-bar-chart-o fa-2x text-muted"></i></td>
+								<td>
+									<h4><a href="/sgbmi/admin/sequences/qualityTask/new">
+										<span data-i18n-key="AnaliseSequencias">Analise sequências</span>
+									</a>
+										<small data-i18n-key="AnaliseSuasSequencias">Analise suas sequências</small>
+									</h4>
+								</td>
+								<td class="text-center hidden-xs hidden-sm">
+									<a href="javascript:void(0);">0</a>
+								</td>
+								<td class="hidden-xs hidden-sm">
+									<small><i data-i18n-key="Nunca">Nunca</i></small>
+								</td>
+							</tr>
+							<!-- end TR -->
+							
+							<!-- TR -->
+							<tr>
+								<td class="text-center" style="width: 40px;"><i class="fa fa-search fa-2x text-muted"></i></td>
+								<td>
+									<h4><a href="https://microreact.org/project/mRGYVmPjN1eKS2YJzhP7u3-cabgen-agosto-2022" target="_blank">
+										<span data-i18n-key="Consultar">Consultar</span>
+									</a>
+										<small data-i18n-key="VejaSuasSequencias">Veja todas as suas sequências</small>
+									</h4>
+								</td>
+								<td class="text-center hidden-xs hidden-sm">
+									<a href="javascript:void(0);">0</a>
+								</td>
+								<td class="hidden-xs hidden-sm">
+									<small><i data-i18n-key="Nunca">Nunca</i></small>
+								</td>
+							</tr>
+							<!-- end TR -->
+							
+						</tbody>
+					</table>
+
+					<table class="table table-striped table-forum">
+						<thead>
+							<tr>
+								<th colspan="2" data-i18n-key="Suporte">Suporte</th>
+								<th class="text-center hidden-xs hidden-sm" style="width: 100px;" data-i18n-key="Quantidade">Quantidade</th>
+								<th class="hidden-xs hidden-sm" style="width: 200px;" data-i18n-key="UltimaAtualizacao">Ult. atualização</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<!-- TR -->
+							<tr>
+								<td class="text-center" style="width: 40px;"><i class="fa fa-book fa-2x text-muted"></i></td>
+								<td>
+									<h4><a href="/sgbmi/<%- __i18n("uploads/how_to_english.pdf") %>" target="_blank">
+											<span data-i18n-key="Como">Como...</span>
+										</a>
+										<small data-i18n-key="Instrucoes">Instruções de como usar o sistema</small>
+									</h4>
+								</td>
+								<td class="text-center hidden-xs hidden-sm">
+									<a href="javascript:void(0);">10</a>
+								</td>
+								<td class="hidden-xs hidden-sm"><span data-i18n-key="por">por</span> 
+									<a href="javascript:void(0);">Felicita Dure</a>
+									<br>
+									<small><i>Maio 5, 2021</i></small>
+								</td>
+							</tr>
+							<!-- end TR -->
+							
+							<!-- TR -->
+							<tr>
+								<td class="text-center" style="width: 40px;"><i class="fa fa-question-circle fa-2x text-muted"></i></td>
+								<td>
+									<h4><a href="/sgbmi/admin/">
+											<span data-i18n-key="faq">Perguntas e FAQs</span>
+										</a>
+										<small data-i18n-key="faqObs">Perguntas Mais Frequentes dos Usuários</small>
+									</h4>
+								</td>
+								<td class="text-center hidden-xs hidden-sm">
+									<a href="javascript:void(0);">5</a>
+								</td>
+								<td class="hidden-xs hidden-sm">por 
+									<a href="javascript:void(0);">Felicita Dure</a>
+									<br>
+									<small><i>Maio 5, 2021</i></small>
+								</td>
+							</tr>
+							<!-- end TR -->
+							
+						</tbody>
+					</table>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<!-- end row --> 
+	<% }  %>
+
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
+
+			 <!-- row -->
+                        <div class="row">
+                                <!-- NEW WIDGET START -->
+                                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <!-- Widget ID (each widget will need unique ID)-->
+                                                        <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-collapsed="false">
+                                                                <header>
+                                                                        <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                                                                        <h2><%- __i18n("Bird Eye") %></h2>
+
+                                                                </header>
+
+                                                                <!-- widget div-->
+                                                                <div>
+
+                                                                        <!-- widget edit box -->
+                                                                        <div class="jarviswidget-editbox">
+                                                                                <!-- This area used as dropdown edit box -->
+
+                                                                        </div>
+                                                                        <!-- end widget edit box -->
+
+                                                                        <!-- widget content -->
+                                                                        <div class="widget-body no-padding">
+                                                                                <div id="vector-map" class="chart"></div>
+                                                                                <div id="heat-fill">
+                                                                                        <span class="fill-a">0</span>
+                                                                                        <span class="fill-b">5000</span>
+                                                                                </div>
+                                                                        </div>
+                                                                        <!-- end widget content -->
+
+                                                                </div>
+                                                                <!-- end widget div -->
+
+                                                        </div>
+                                                        <!-- end widget -->
+
+                                </article>
+                        </div>
+			<!-- row -->
+			<div class="row">
+				<!-- NEW WIDGET START -->
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-collapsed="false">
+								<header>
+									<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+									<h2><%- __i18n("Sequencas por Origens/mes do ano atual") %></h2>
+
+								</header>
+
+								<!-- widget div-->
+								<div>
+
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+
+									</div>
+									<!-- end widget edit box -->
+
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+										<p class="alert">
+											<span class="label bg-color-teal pull-left">Human&nbsp;</span> 
+											<span class="label bg-color-greenLight pull-left">Animal&nbsp;</span> 
+											<span class="label bg-color-blueDark pull-left">Ambiental&nbsp;</span>
+										</p>
+										<div id="origen-chart" class="chart"></div>
+
+									</div>
+									<!-- end widget content -->
+
+								</div>
+								<!-- end widget div -->
+
+							</div>
+							<!-- end widget -->
+
+				</article>
+			</div>
+			<!-- row -->
+                        <div class="row">
+                                <!-- NEW WIDGET START -->
+                                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <!-- Widget ID (each widget will need unique ID)-->
+                                                        <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-collapsed="false">
+                                                                <header>
+                                                                        <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                                                                        <h2><%- __i18n("Quantia por Gene (Melhores 10)") %></h2>
+
+                                                                </header>
+
+                                                                <!-- widget div-->
+                                                                <div>
+
+                                                                        <!-- widget edit box -->
+                                                                        <div class="jarviswidget-editbox">
+                                                                                <!-- This area used as dropdown edit box -->
+
+                                                                        </div>
+                                                                        <!-- end widget edit box -->
+
+                                                                        <!-- widget content -->
+                                                                        <div class="widget-body no-padding">
+                                                                                <div id="gene-chart" class="chart"></div>
+
+                                                                        </div>
+                                                                        <!-- end widget content -->
+
+                                                                </div>
+                                                                <!-- end widget div -->
+
+                                                        </div>
+                                                        <!-- end widget -->
+
+                                </article>
+                        </div>
+
+			<!-- row -->
+                        <div class="row">
+                                <!-- NEW WIDGET START -->
+                                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <!-- Widget ID (each widget will need unique ID)-->
+                                                        <div class="jarviswidget" id="wid-id-2" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-collapsed="false">
+                                                                <header>
+                                                                        <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                                                                        <h2><%- __i18n("Quantia Por Especies (Melhores 10)") %></h2>
+
+                                                                </header>
+
+                                                                <!-- widget div-->
+                                                                <div>
+
+                                                                        <!-- widget edit box -->
+                                                                        <div class="jarviswidget-editbox">
+                                                                                <!-- This area used as dropdown edit box -->
+
+                                                                        </div>
+                                                                        <!-- end widget edit box -->
+
+                                                                        <!-- widget content -->
+                                                                        <div class="widget-body no-padding">
+                                                                                <div id="especies-chart" class="chart"></div>
+
+                                                                        </div>
+                                                                        <!-- end widget content -->
+
+                                                                </div>
+                                                                <!-- end widget div -->
+
+                                                        </div>
+                                                        <!-- end widget -->
+
+                                </article>
+                        </div>
+
+
+			 <!-- row -->
+                        <div class="row">
+                                <!-- NEW WIDGET START -->
+                                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <!-- Widget ID (each widget will need unique ID)-->
+                                                        <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-collapsed="false">
+                                                                <header>
+                                                                        <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                                                                        <h2><%- __i18n("Mlst") %></h2>
+
+                                                                </header>
+
+                                                                <!-- widget div-->
+                                                                <div>
+
+                                                                        <!-- widget edit box -->
+                                                                        <div class="jarviswidget-editbox">
+                                                                                <!-- This area used as dropdown edit box -->
+
+                                                                        </div>
+                                                                        <!-- end widget edit box -->
+
+                                                                        <!-- widget content -->
+                                                                        <div class="widget-body no-padding">
+                                                                                <div id="noroll" class="chart"></div>
+
+                                                                        </div>
+                                                                        <!-- end widget content -->
+
+                                                                </div>
+                                                                <!-- end widget div -->
+
+                                                        </div>
+                                                        <!-- end widget -->
+
+                                </article>
+                        </div>
+		</section>
+		<!-- END widget grid -->
+
+</div>
+<%- include ('partials/_bodyBottom'); %>		
+<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+<script src="/sgbmi/js/plugin/flot/jquery.flot.cust.min.js"></script>
+<script src="/sgbmi/js/plugin/flot/jquery.flot.resize.min.js"></script>
+<script src="/sgbmi/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+<script src="/sgbmi/js/plugin/flot/jquery.flot.orderBar.min.js"></script>
+<script src="/sgbmi/js/plugin/flot/jquery.flot.pie.min.js"></script>
+<script src="/sgbmi/js/plugin/flot/jquery.flot.time.min.js"></script>
+<script src="/sgbmi/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+<!-- Morris Chart Dependencies -->
+<script src="/sgbmi/js/plugin/morris/raphael.min.js"></script>
+<script src="/sgbmi/js/plugin/morris/morris.min.js"></script>
+<script src="/sgbmi/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/sgbmi/js/plugin/vectormap/jquery-jvectormap-world-mill-en-3.js"></script>
+<script src="/sgbmi/js/plugin/dygraphs/dygraph-combined.min.js"></script>
+<script>
+	/* chart colors default */
+			var $chrt_border_color = "#efefef";
+			var $chrt_grid_color = "#DDD"
+			var $chrt_main = "#E24913";
+			/* red       */
+			var $chrt_second = "#6595b4";
+			/* blue      */
+			var $chrt_third = "#FF9F01";
+			/* orange    */
+			var $chrt_fourth = "#7e9d3a";
+			/* green     */
+			var $chrt_fifth = "#BD362F";
+			/* dark red  */
+			var $chrt_mono = "#000";
+
+	$(document).ready(function() {
+		pageSetUp();
+
+		<% if ( typeof sess !== 'undefined' ) { %>
+		//var test = <%- JSON.stringify(humanByMonth) %>;
+		var humanByMonth = {};
+		<% humanByMonth.forEach(hbmdata => { %>
+        			<%= `humanByMonth[${hbmdata["_id"]}]= ${hbmdata["count"]};` %>
+		<% });  %>	
+		var animalByMonth = {};
+                <% animalByMonth.forEach(abmdata => { %>
+                                <%= `animalByMonth[${abmdata["_id"]}]= ${abmdata["count"]};` %>
+                <% });  %> 
+		var ambientalByMonth = {};
+                <% ambientalByMonth.forEach(abbmdata => { %>
+                                <%= `ambientalByMonth[${abbmdata["_id"]}]= ${abbmdata["count"]};` %>
+                <% });  %> 
+		if ($("#origen-chart").length) {
+
+					var data1 = [];
+					for (var i = 1; i < 12; i += 1) {
+						data1.push([i, (i in humanByMonth ? humanByMonth[i] : 0 )]);
+					}
+					var data2 = [];
+					for (var i = 1; i < 12; i += 1) {
+						data2.push([i, (i in animalByMonth ? animalByMonth[i] : 0 )]);
+					}
+
+					var data3 = [];
+					for (var i = 1; i < 12; i += 1) {
+						data3.push([i, (i in ambientalByMonth ? ambientalByMonth[i] : 0 )]);
+					}
+
+					var ds = new Array();
+
+					ds.push({
+						data : data1,
+						bars : {
+							show : true,
+							barWidth : 0.2,
+							order : 1,
+						}
+					});
+					ds.push({
+						data : data2,
+						bars : {
+							show : true,
+							barWidth : 0.2,
+							order : 2
+						}
+					});
+					ds.push({
+						data : data3,
+						bars : {
+							show : true,
+							barWidth : 0.2,
+							order : 3
+						}
+					});
+
+					//Display graph
+					$.plot($("#origen-chart"), ds, {
+						colors : [$chrt_second, $chrt_fourth, "#666", "#BBB"],
+						grid : {
+							show : true,
+							hoverable : true,
+							clickable : true,
+							tickColor : $chrt_border_color,
+							borderWidth : 0,
+							borderColor : $chrt_border_color,
+						},
+						legend : true,
+						tooltip : true,
+						tooltipOpts : {
+							content : "<b>%x</b> = <span>%y</span>",
+							defaultTheme : false
+						}
+
+					});
+
+				}
+			var geneRanking = <%- JSON.stringify(rankingByGene); %>
+			/* bar-chart-h */
+				if ($("#gene-chart").length) {
+					//Display horizontal graph
+					// bar graph color
+
+					Morris.Bar({
+						element : 'gene-chart',
+						data : geneRanking,
+						xkey : '_id',
+						ykeys : ['quantity'],
+						labels : ['Y'],
+						barColors : function(row, series, type) {
+							if (type === 'bar') {
+								var red = Math.ceil(150 * row.y / this.ymax);
+								return 'rgb(' + red + ',0,0)';
+							} else {
+								return '#000';
+							}
+						}
+					});
+
+				
+				}
+
+				/* end bar-chart-h */
+
+			var especiesRanking = <%- JSON.stringify(rankingBySpecies); %>;
+			configEsp = {
+    			  data: especiesRanking,
+			  xkey: '_id',
+      			  ykeys: ['total'],
+      			  labels: ['Total'],
+      			  fillOpacity: 0.6,
+      	                  hideHover: 'auto',
+           	      	  behaveLikeLine: true,
+		      	  resize: true,
+			  pointFillColors:['#ffffff'],
+		          pointStrokeColors: ['black'],
+		          lineColors:['gray']
+		       };
+			
+			configEsp.element = 'especies-chart';
+			configEsp.stacked = true;
+			Morris.Bar(configEsp);
+
+		    var data_array = <%- JSON.stringify(qtyByCountry); %>;
+	            var data_obj = {};
+		    for (var i = 0; i < data_array.length; i++) {
+ 			data_obj[data_array[i]._id] = data_array[i].total;
+		    } 
+		    $('#vector-map').vectorMap({
+		        map: 'world_mill_en',
+		        backgroundColor: '#fff',
+		        regionStyle: {
+		            initial: {
+		                fill: '#c4c4c4'
+		            },
+		            hover: {
+		                "fill-opacity": 1
+		            }
+		        },
+		        series: {
+		            regions: [{
+		                values: data_obj,
+		                scale: ['#85a8b6', '#4d7686'],
+		                normalizeFunction: 'polynomial'
+		            }]
+		        },
+		        onRegionLabelShow: function (e, el, code) {
+		            if (typeof data_obj[code] == 'undefined') {
+		                e.preventDefault();
+		            } else {
+		                var countrylbl = data_obj[code];
+		                el.html(el.html() + ': ' + countrylbl + ' sequences');
+		            }
+		        }
+		    });
+ 		    
+	            var mlst_array = <%- JSON.stringify(qtyMlst); %>;
+                    var mlst_obj = [];
+		    for (var i = 0; i < mlst_array.length; i++) {
+                        mlst_obj.push([parseInt(mlst_array[i]._id), mlst_array[i].cantidad]);
+                    }
+	      g1 = new Dygraph(	document.getElementById("noroll"), mlst_obj ,
+	              {
+        	        labels: [ "x", "Quantity" ],
+			title : "MLST Group by Quantity",
+			ylabel : 'Repetition',	
+			labelsDivStyles : {
+						'textAlign' : 'right'
+					},
+			showRangeSelector : true
+	              }	
+
+			); 
+		<% } %>
+	});
+</script>
+<%- include ('partials/_footer'); %>

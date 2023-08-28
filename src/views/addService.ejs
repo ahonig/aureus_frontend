@@ -1,0 +1,448 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-fw fa-hospital-o"></i> 
+					Configuracoes
+				<span>> 
+					Agregar Servico
+				</span>
+			</h1>
+		</div>
+    </div>
+    
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+		<% if ( typeof servico !== 'undefined' ) { %> 
+
+		<div class="alert alert-warning alert-block">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4 class="alert-heading">Error!</h4>
+			   <%=	(typeof err !== 'undefined' ? err : '' ) %>
+			</div> 
+
+		<% } %>
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                        <h2>Complete el formulario </h2>				
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox">
+                        </div>
+                        <div class="widget-body no-padding">
+                            <form id="add-form" class="smart-form" novalidate="novalidate" method="POST" autocomplete="off">
+                                <fieldset>
+                                    <section>
+                                        <label class="input">
+                                            <input type="text" name="nome" placeholder="Nome" value="<%= (typeof servico !== 'undefined' ? servico.nome : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o nome do servico</b> </label>
+                                    </section>
+									<div class="row">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="estado">
+                                                    <option value="" selected="" disabled="">Estado</option>
+                                                    <option value="ACTI" <%= (typeof origen !== 'undefined' && origen.estado=='ACTI') ? 'selected=""': '' %>>Activo</option>
+                                                    <option value="INAC" <%= (typeof origen !== 'undefined' && origen.estado=='INAC') ? 'selected=""': '' %>>Inactivo</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+									<section>
+										<div class="form-group">
+											<select name="pais" style="width:100%" class="select2"> 
+												<option value="" selected="" disabled="">Pais</option>
+												<option value="AFG" <%= (typeof servico !== 'undefined' && servico.pais=='AFG') ? 'selected=""': '' %>>Afghanistan</option>
+												<option value="ALB" <%= (typeof servico !== 'undefined' && servico.pais=='ALB') ? 'selected=""': '' %>>Albania</option>
+												<option value="DEU" <%= (typeof servico !== 'undefined' && servico.pais=='DEU') ? 'selected=""': '' %>>Germany</option>
+												<option value="DZA" <%= (typeof servico !== 'undefined' && servico.pais=='DZA') ? 'selected=""': '' %>>Algeria</option>
+												<option value="AND" <%= (typeof servico !== 'undefined' && servico.pais=='AND') ? 'selected=""': '' %>>Andorra</option>
+												<option value="AGO" <%= (typeof servico !== 'undefined' && servico.pais=='AGO') ? 'selected=""': '' %>>Angola</option>
+												<option value="AIA" <%= (typeof servico !== 'undefined' && servico.pais=='AIA') ? 'selected=""': '' %>>Anguilla</option>
+												<option value="ATA" <%= (typeof servico !== 'undefined' && servico.pais=='ATA') ? 'selected=""': '' %>>Antarctica</option>
+												<option value="ATG" <%= (typeof servico !== 'undefined' && servico.pais=='ATG') ? 'selected=""': '' %>>Antigua and Barbuda</option>
+												<option value="ANT" <%= (typeof servico !== 'undefined' && servico.pais=='ANT') ? 'selected=""': '' %>>Netherlands Antilles</option>
+												<option value="SAU" <%= (typeof servico !== 'undefined' && servico.pais=='SAU') ? 'selected=""': '' %>>Saudi Arabia</option>
+												<option value="ARG" <%= (typeof servico !== 'undefined' && servico.pais=='ARG') ? 'selected=""': '' %>>Argentina</option>
+												<option value="ARM" <%= (typeof servico !== 'undefined' && servico.pais=='ARM') ? 'selected=""': '' %>>Armenia</option>
+												<option value="ABW" <%= (typeof servico !== 'undefined' && servico.pais=='ABW') ? 'selected=""': '' %>>Aruba</option>
+												<option value="AUS" <%= (typeof servico !== 'undefined' && servico.pais=='AUS') ? 'selected=""': '' %>>Australia</option>
+												<option value="AUT" <%= (typeof servico !== 'undefined' && servico.pais=='AUT') ? 'selected=""': '' %>>Austria</option>
+												<option value="AZE" <%= (typeof servico !== 'undefined' && servico.pais=='AZE') ? 'selected=""': '' %>>Azerbaijan</option>
+												<option value="BEL" <%= (typeof servico !== 'undefined' && servico.pais=='BEL') ? 'selected=""': '' %>>Belgium</option>
+												<option value="BHS" <%= (typeof servico !== 'undefined' && servico.pais=='BHS') ? 'selected=""': '' %>>Bahamas</option>
+												<option value="BHR" <%= (typeof servico !== 'undefined' && servico.pais=='BHR') ? 'selected=""': '' %>>Bahrain</option>
+												<option value="BGD" <%= (typeof servico !== 'undefined' && servico.pais=='BGD') ? 'selected=""': '' %>>Bangladesh</option>
+												<option value="BRB" <%= (typeof servico !== 'undefined' && servico.pais=='BRB') ? 'selected=""': '' %>>Barbados</option>
+												<option value="BLZ" <%= (typeof servico !== 'undefined' && servico.pais=='BLZ') ? 'selected=""': '' %>>Belize</option>
+												<option value="BEN" <%= (typeof servico !== 'undefined' && servico.pais=='BEN') ? 'selected=""': '' %>>Benin</option>
+												<option value="BTN" <%= (typeof servico !== 'undefined' && servico.pais=='BTN') ? 'selected=""': '' %>>Bhutan</option>
+												<option value="BLR" <%= (typeof servico !== 'undefined' && servico.pais=='BLR') ? 'selected=""': '' %>>Belarus</option>
+												<option value="MMR" <%= (typeof servico !== 'undefined' && servico.pais=='MMR') ? 'selected=""': '' %>>Myanmar</option>
+												<option value="BOL" <%= (typeof servico !== 'undefined' && servico.pais=='BOL') ? 'selected=""': '' %>>Bolivia</option>
+												<option value="BIH" <%= (typeof servico !== 'undefined' && servico.pais=='BIH') ? 'selected=""': '' %>>Bosnia and Herzegovina</option>
+												<option value="BWA" <%= (typeof servico !== 'undefined' && servico.pais=='BWA') ? 'selected=""': '' %>>Botswana</option>
+												<option value="BRA" <%= (typeof servico !== 'undefined' && servico.pais=='BRA') ? 'selected=""': '' %>>Brazil</option>
+												<option value="BRN" <%= (typeof servico !== 'undefined' && servico.pais=='BRN') ? 'selected=""': '' %>>Brunei</option>
+												<option value="BGR" <%= (typeof servico !== 'undefined' && servico.pais=='BGR') ? 'selected=""': '' %>>Bulgaria</option>
+												<option value="BFA" <%= (typeof servico !== 'undefined' && servico.pais=='BFA') ? 'selected=""': '' %>>Burkina Faso</option>
+												<option value="BDI" <%= (typeof servico !== 'undefined' && servico.pais=='BDI') ? 'selected=""': '' %>>Burundi</option>
+												<option value="CPV" <%= (typeof servico !== 'undefined' && servico.pais=='CPV') ? 'selected=""': '' %>>Cape Verde</option>
+												<option value="KHM" <%= (typeof servico !== 'undefined' && servico.pais=='KHM') ? 'selected=""': '' %>>Cambodia</option>
+												<option value="CMR" <%= (typeof servico !== 'undefined' && servico.pais=='CMR') ? 'selected=""': '' %>>Cameroon</option>
+												<option value="CAN" <%= (typeof servico !== 'undefined' && servico.pais=='CAN') ? 'selected=""': '' %>>Canada</option>
+												<option value="TCD" <%= (typeof servico !== 'undefined' && servico.pais=='TCD') ? 'selected=""': '' %>>Chad</option>
+												<option value="CHL" <%= (typeof servico !== 'undefined' && servico.pais=='CHL') ? 'selected=""': '' %>>Chile</option>
+												<option value="CHN" <%= (typeof servico !== 'undefined' && servico.pais=='CHN') ? 'selected=""': '' %>>China</option>
+												<option value="CYP" <%= (typeof servico !== 'undefined' && servico.pais=='CYP') ? 'selected=""': '' %>>Cyprus</option>
+												<option value="VAT" <%= (typeof servico !== 'undefined' && servico.pais=='VAT') ? 'selected=""': '' %>>Vatican City State</option>
+												<option value="COL" <%= (typeof servico !== 'undefined' && servico.pais=='COL') ? 'selected=""': '' %>>Colombia</option>
+												<option value="COM" <%= (typeof servico !== 'undefined' && servico.pais=='COM') ? 'selected=""': '' %>>Comoros</option>
+												<option value="COG" <%= (typeof servico !== 'undefined' && servico.pais=='COG') ? 'selected=""': '' %>>Congo</option>
+												<option value="COD" <%= (typeof servico !== 'undefined' && servico.pais=='COD') ? 'selected=""': '' %>>Congo</option>
+												<option value="PRK" <%= (typeof servico !== 'undefined' && servico.pais=='PRK') ? 'selected=""': '' %>>North Korea</option>
+												<option value="KOR" <%= (typeof servico !== 'undefined' && servico.pais=='KOR') ? 'selected=""': '' %>>South Korea</option>
+												<option value="CIV" <%= (typeof servico !== 'undefined' && servico.pais=='CIV') ? 'selected=""': '' %>>Ivory Coast</option>
+												<option value="CRI" <%= (typeof servico !== 'undefined' && servico.pais=='CRI') ? 'selected=""': '' %>>Costa Rica</option>
+												<option value="HRV" <%= (typeof servico !== 'undefined' && servico.pais=='HRV') ? 'selected=""': '' %>>Croatia</option>
+												<option value="CUB" <%= (typeof servico !== 'undefined' && servico.pais=='CUB') ? 'selected=""': '' %>>Cuba</option>
+												<option value="DNK" <%= (typeof servico !== 'undefined' && servico.pais=='DNK') ? 'selected=""': '' %>>Denmark</option>
+												<option value="DMA" <%= (typeof servico !== 'undefined' && servico.pais=='DMA') ? 'selected=""': '' %>>Dominica</option>
+												<option value="ECU" <%= (typeof servico !== 'undefined' && servico.pais=='ECU') ? 'selected=""': '' %>>Ecuador</option>
+												<option value="EGY" <%= (typeof servico !== 'undefined' && servico.pais=='EGY') ? 'selected=""': '' %>>Egypt</option>
+												<option value="SLV" <%= (typeof servico !== 'undefined' && servico.pais=='SLV') ? 'selected=""': '' %>>El Salvador</option>
+												<option value="ARE" <%= (typeof servico !== 'undefined' && servico.pais=='ARE') ? 'selected=""': '' %>>United Arab Emirates</option>
+												<option value="ERI" <%= (typeof servico !== 'undefined' && servico.pais=='ERI') ? 'selected=""': '' %>>Eritrea</option>
+												<option value="SVK" <%= (typeof servico !== 'undefined' && servico.pais=='SVK') ? 'selected=""': '' %>>Slovakia</option>
+												<option value="SVN" <%= (typeof servico !== 'undefined' && servico.pais=='SVN') ? 'selected=""': '' %>>Slovenia</option>
+												<option value="ESP" <%= (typeof servico !== 'undefined' && servico.pais=='ESP') ? 'selected=""': '' %>>Spain</option>
+												<option value="USA" <%= (typeof servico !== 'undefined' && servico.pais=='USA') ? 'selected=""': '' %>>United States of America</option>
+												<option value="EST" <%= (typeof servico !== 'undefined' && servico.pais=='EST') ? 'selected=""': '' %>>Estonia</option>
+												<option value="ETH" <%= (typeof servico !== 'undefined' && servico.pais=='ETH') ? 'selected=""': '' %>>Ethiopia</option>
+												<option value="PHL" <%= (typeof servico !== 'undefined' && servico.pais=='PHL') ? 'selected=""': '' %>>Philippines</option>
+												<option value="FIN" <%= (typeof servico !== 'undefined' && servico.pais=='FIN') ? 'selected=""': '' %>>Finland</option>
+												<option value="FJI" <%= (typeof servico !== 'undefined' && servico.pais=='FJI') ? 'selected=""': '' %>>Fiji</option>
+												<option value="FRA" <%= (typeof servico !== 'undefined' && servico.pais=='FRA') ? 'selected=""': '' %>>France</option>
+												<option value="GAB" <%= (typeof servico !== 'undefined' && servico.pais=='GAB') ? 'selected=""': '' %>>Gabon</option>
+												<option value="GMB" <%= (typeof servico !== 'undefined' && servico.pais=='GMB') ? 'selected=""': '' %>>Gambia</option>
+												<option value="GEO" <%= (typeof servico !== 'undefined' && servico.pais=='GEO') ? 'selected=""': '' %>>Georgia</option>
+												<option value="GHA" <%= (typeof servico !== 'undefined' && servico.pais=='GHA') ? 'selected=""': '' %>>Ghana</option>
+												<option value="GIB" <%= (typeof servico !== 'undefined' && servico.pais=='GIB') ? 'selected=""': '' %>>Gibraltar</option>
+												<option value="GRD" <%= (typeof servico !== 'undefined' && servico.pais=='GRD') ? 'selected=""': '' %>>Grenada</option>
+												<option value="GRC" <%= (typeof servico !== 'undefined' && servico.pais=='GRC') ? 'selected=""': '' %>>Greece</option>
+												<option value="GRL" <%= (typeof servico !== 'undefined' && servico.pais=='GRL') ? 'selected=""': '' %>>Greenland</option>
+												<option value="GLP" <%= (typeof servico !== 'undefined' && servico.pais=='GLP') ? 'selected=""': '' %>>Guadeloupe</option>
+												<option value="GUM" <%= (typeof servico !== 'undefined' && servico.pais=='GUM') ? 'selected=""': '' %>>Guam</option>
+												<option value="GTM" <%= (typeof servico !== 'undefined' && servico.pais=='GTM') ? 'selected=""': '' %>>Guatemala</option>
+												<option value="GUF" <%= (typeof servico !== 'undefined' && servico.pais=='GUF') ? 'selected=""': '' %>>French Guiana</option>
+												<option value="GGY" <%= (typeof servico !== 'undefined' && servico.pais=='GGY') ? 'selected=""': '' %>>Guernsey</option>
+												<option value="GIN" <%= (typeof servico !== 'undefined' && servico.pais=='GIN') ? 'selected=""': '' %>>Guinea</option>
+												<option value="GNQ" <%= (typeof servico !== 'undefined' && servico.pais=='GNQ') ? 'selected=""': '' %>>Equatorial Guinea</option>
+												<option value="GNB" <%= (typeof servico !== 'undefined' && servico.pais=='GNB') ? 'selected=""': '' %>>Guinea-Bissau</option>
+												<option value="GUY" <%= (typeof servico !== 'undefined' && servico.pais=='GUY') ? 'selected=""': '' %>>Guyana</option>
+												<option value="HTI" <%= (typeof servico !== 'undefined' && servico.pais=='HTI') ? 'selected=""': '' %>>Haiti</option>
+												<option value="HND" <%= (typeof servico !== 'undefined' && servico.pais=='HND') ? 'selected=""': '' %>>Honduras</option>
+												<option value="HKG" <%= (typeof servico !== 'undefined' && servico.pais=='HKG') ? 'selected=""': '' %>>Hong Kong</option>
+												<option value="HUN" <%= (typeof servico !== 'undefined' && servico.pais=='HUN') ? 'selected=""': '' %>>Hungary</option>
+												<option value="IND" <%= (typeof servico !== 'undefined' && servico.pais=='IND') ? 'selected=""': '' %>>India</option>
+												<option value="IDN" <%= (typeof servico !== 'undefined' && servico.pais=='IDN') ? 'selected=""': '' %>>Indonesia</option>
+												<option value="IRN" <%= (typeof servico !== 'undefined' && servico.pais=='IRN') ? 'selected=""': '' %>>Iran</option>
+												<option value="IRQ" <%= (typeof servico !== 'undefined' && servico.pais=='IRQ') ? 'selected=""': '' %>>Iraq</option>
+												<option value="IRL" <%= (typeof servico !== 'undefined' && servico.pais=='IRL') ? 'selected=""': '' %>>Ireland</option>
+												<option value="BVT" <%= (typeof servico !== 'undefined' && servico.pais=='BVT') ? 'selected=""': '' %>>Bouvet Island</option>
+												<option value="IMN" <%= (typeof servico !== 'undefined' && servico.pais=='IMN') ? 'selected=""': '' %>>Isle of Man</option>
+												<option value="CXR" <%= (typeof servico !== 'undefined' && servico.pais=='CXR') ? 'selected=""': '' %>>Christmas Island</option>
+												<option value="NFK" <%= (typeof servico !== 'undefined' && servico.pais=='NFK') ? 'selected=""': '' %>>Norfolk Island</option>
+												<option value="ISL" <%= (typeof servico !== 'undefined' && servico.pais=='ISL') ? 'selected=""': '' %>>Iceland</option>
+												<option value="BMU" <%= (typeof servico !== 'undefined' && servico.pais=='BMU') ? 'selected=""': '' %>>Bermuda Islands</option>
+												<option value="CYM" <%= (typeof servico !== 'undefined' && servico.pais=='CYM') ? 'selected=""': '' %>>Cayman Islands</option>
+												<option value="CCK" <%= (typeof servico !== 'undefined' && servico.pais=='CCK') ? 'selected=""': '' %>>Cocos (Keeling) Islands</option>
+												<option value="COK" <%= (typeof servico !== 'undefined' && servico.pais=='COK') ? 'selected=""': '' %>>Cook Islands</option>
+												<option value="ALA" <%= (typeof servico !== 'undefined' && servico.pais=='ALA') ? 'selected=""': '' %>>Ã…land Islands</option>
+												<option value="FRO" <%= (typeof servico !== 'undefined' && servico.pais=='FRO') ? 'selected=""': '' %>>Faroe Islands</option>
+												<option value="SGS" <%= (typeof servico !== 'undefined' && servico.pais=='SGS') ? 'selected=""': '' %>>South Georgia and the South Sandwich Islands</option>
+												<option value="HMD" <%= (typeof servico !== 'undefined' && servico.pais=='HMD') ? 'selected=""': '' %>>Heard Island and McDonald Islands</option>
+												<option value="MDV" <%= (typeof servico !== 'undefined' && servico.pais=='MDV') ? 'selected=""': '' %>>Maldives</option>
+												<option value="FLK" <%= (typeof servico !== 'undefined' && servico.pais=='FLK') ? 'selected=""': '' %>>Falkland Islands (Malvinas)</option>
+												<option value="MNP" <%= (typeof servico !== 'undefined' && servico.pais=='MNP') ? 'selected=""': '' %>>Northern Mariana Islands</option>
+												<option value="MHL" <%= (typeof servico !== 'undefined' && servico.pais=='MHL') ? 'selected=""': '' %>>Marshall Islands</option>
+												<option value="PCN" <%= (typeof servico !== 'undefined' && servico.pais=='PCN') ? 'selected=""': '' %>>Pitcairn Islands</option>
+												<option value="SLB" <%= (typeof servico !== 'undefined' && servico.pais=='SLB') ? 'selected=""': '' %>>Solomon Islands</option>
+												<option value="TCA" <%= (typeof servico !== 'undefined' && servico.pais=='TCA') ? 'selected=""': '' %>>Turks and Caicos Islands</option>
+												<option value="UMI" <%= (typeof servico !== 'undefined' && servico.pais=='UMI') ? 'selected=""': '' %>>United States Minor Outlying Islands</option>
+												<option value="VG" <%= (typeof servico !== 'undefined' && servico.pais=='VG') ? 'selected=""': '' %>>Virgin Islands</option>
+												<option value="VIR" <%= (typeof servico !== 'undefined' && servico.pais=='VIR') ? 'selected=""': '' %>>United States Virgin Islands</option>
+												<option value="ISR" <%= (typeof servico !== 'undefined' && servico.pais=='ISR') ? 'selected=""': '' %>>Israel</option>
+												<option value="ITA" <%= (typeof servico !== 'undefined' && servico.pais=='ITA') ? 'selected=""': '' %>>Italy</option>
+												<option value="JAM" <%= (typeof servico !== 'undefined' && servico.pais=='JAM') ? 'selected=""': '' %>>Jamaica</option>
+												<option value="JPN" <%= (typeof servico !== 'undefined' && servico.pais=='JPN') ? 'selected=""': '' %>>Japan</option>
+												<option value="JEY" <%= (typeof servico !== 'undefined' && servico.pais=='JEY') ? 'selected=""': '' %>>Jersey</option>
+												<option value="JOR" <%= (typeof servico !== 'undefined' && servico.pais=='JOR') ? 'selected=""': '' %>>Jordan</option>
+												<option value="KAZ" <%= (typeof servico !== 'undefined' && servico.pais=='KAZ') ? 'selected=""': '' %>>Kazakhstan</option>
+												<option value="KEN" <%= (typeof servico !== 'undefined' && servico.pais=='KEN') ? 'selected=""': '' %>>Kenya</option>
+												<option value="KGZ" <%= (typeof servico !== 'undefined' && servico.pais=='KGZ') ? 'selected=""': '' %>>Kyrgyzstan</option>
+												<option value="KIR" <%= (typeof servico !== 'undefined' && servico.pais=='KIR') ? 'selected=""': '' %>>Kiribati</option>
+												<option value="KWT" <%= (typeof servico !== 'undefined' && servico.pais=='KWT') ? 'selected=""': '' %>>Kuwait</option>
+												<option value="LBN" <%= (typeof servico !== 'undefined' && servico.pais=='LBN') ? 'selected=""': '' %>>Lebanon</option>
+												<option value="LAO" <%= (typeof servico !== 'undefined' && servico.pais=='LAO') ? 'selected=""': '' %>>Laos</option>
+												<option value="LSO" <%= (typeof servico !== 'undefined' && servico.pais=='LSO') ? 'selected=""': '' %>>Lesotho</option>
+												<option value="LVA" <%= (typeof servico !== 'undefined' && servico.pais=='LVA') ? 'selected=""': '' %>>Latvia</option>
+												<option value="LBR" <%= (typeof servico !== 'undefined' && servico.pais=='LBR') ? 'selected=""': '' %>>Liberia</option>
+												<option value="LBY" <%= (typeof servico !== 'undefined' && servico.pais=='LBY') ? 'selected=""': '' %>>Libya</option>
+												<option value="LIE" <%= (typeof servico !== 'undefined' && servico.pais=='LIE') ? 'selected=""': '' %>>Liechtenstein</option>
+												<option value="LTU" <%= (typeof servico !== 'undefined' && servico.pais=='LTU') ? 'selected=""': '' %>>Lithuania</option>
+												<option value="LUX" <%= (typeof servico !== 'undefined' && servico.pais=='LUX') ? 'selected=""': '' %>>Luxembourg</option>
+												<option value="MEX" <%= (typeof servico !== 'undefined' && servico.pais=='MEX') ? 'selected=""': '' %>>Mexico</option>
+												<option value="MCO" <%= (typeof servico !== 'undefined' && servico.pais=='MCO') ? 'selected=""': '' %>>Monaco</option>
+												<option value="MAC" <%= (typeof servico !== 'undefined' && servico.pais=='MAC') ? 'selected=""': '' %>>Macao</option>
+												<option value="MKD" <%= (typeof servico !== 'undefined' && servico.pais=='MKD') ? 'selected=""': '' %>>Macedonia</option>
+												<option value="MDG" <%= (typeof servico !== 'undefined' && servico.pais=='MDG') ? 'selected=""': '' %>>Madagascar</option>
+												<option value="MYS" <%= (typeof servico !== 'undefined' && servico.pais=='MYS') ? 'selected=""': '' %>>Malaysia</option>
+												<option value="MWI" <%= (typeof servico !== 'undefined' && servico.pais=='MWI') ? 'selected=""': '' %>>Malawi</option>
+												<option value="MLI" <%= (typeof servico !== 'undefined' && servico.pais=='MLI') ? 'selected=""': '' %>>Mali</option>
+												<option value="MLT" <%= (typeof servico !== 'undefined' && servico.pais=='MLT') ? 'selected=""': '' %>>Malta</option>
+												<option value="MAR" <%= (typeof servico !== 'undefined' && servico.pais=='MAR') ? 'selected=""': '' %>>Morocco</option>
+												<option value="MTQ" <%= (typeof servico !== 'undefined' && servico.pais=='MTQ') ? 'selected=""': '' %>>Martinique</option>
+												<option value="MUS" <%= (typeof servico !== 'undefined' && servico.pais=='MUS') ? 'selected=""': '' %>>Mauritius</option>
+												<option value="MRT" <%= (typeof servico !== 'undefined' && servico.pais=='MRT') ? 'selected=""': '' %>>Mauritania</option>
+												<option value="MYT" <%= (typeof servico !== 'undefined' && servico.pais=='MYT') ? 'selected=""': '' %>>Mayotte</option>
+												<option value="FSM" <%= (typeof servico !== 'undefined' && servico.pais=='FSM') ? 'selected=""': '' %>>Estados Federados de</option>
+												<option value="MDA" <%= (typeof servico !== 'undefined' && servico.pais=='MDA') ? 'selected=""': '' %>>Moldova</option>
+												<option value="MNG" <%= (typeof servico !== 'undefined' && servico.pais=='MNG') ? 'selected=""': '' %>>Mongolia</option>
+												<option value="MNE" <%= (typeof servico !== 'undefined' && servico.pais=='MNE') ? 'selected=""': '' %>>Montenegro</option>
+												<option value="MSR" <%= (typeof servico !== 'undefined' && servico.pais=='MSR') ? 'selected=""': '' %>>Montserrat</option>
+												<option value="MOZ" <%= (typeof servico !== 'undefined' && servico.pais=='MOZ') ? 'selected=""': '' %>>Mozambique</option>
+												<option value="NAM" <%= (typeof servico !== 'undefined' && servico.pais=='NAM') ? 'selected=""': '' %>>Namibia</option>
+												<option value="NRU" <%= (typeof servico !== 'undefined' && servico.pais=='NRU') ? 'selected=""': '' %>>Nauru</option>
+												<option value="NPL" <%= (typeof servico !== 'undefined' && servico.pais=='NPL') ? 'selected=""': '' %>>Nepal</option>
+												<option value="NIC" <%= (typeof servico !== 'undefined' && servico.pais=='NIC') ? 'selected=""': '' %>>Nicaragua</option>
+												<option value="NER" <%= (typeof servico !== 'undefined' && servico.pais=='NER') ? 'selected=""': '' %>>Niger</option>
+												<option value="NGA" <%= (typeof servico !== 'undefined' && servico.pais=='NGA') ? 'selected=""': '' %>>Nigeria</option>
+												<option value="NIU" <%= (typeof servico !== 'undefined' && servico.pais=='NIU') ? 'selected=""': '' %>>Niue</option>
+												<option value="NOR" <%= (typeof servico !== 'undefined' && servico.pais=='NOR') ? 'selected=""': '' %>>Norway</option>
+												<option value="NCL" <%= (typeof servico !== 'undefined' && servico.pais=='NCL') ? 'selected=""': '' %>>New Caledonia</option>
+												<option value="NZL" <%= (typeof servico !== 'undefined' && servico.pais=='NZL') ? 'selected=""': '' %>>New Zealand</option>
+												<option value="OMN" <%= (typeof servico !== 'undefined' && servico.pais=='OMN') ? 'selected=""': '' %>>Oman</option>
+												<option value="NLD" <%= (typeof servico !== 'undefined' && servico.pais=='NLD') ? 'selected=""': '' %>>Netherlands</option>
+												<option value="PAK" <%= (typeof servico !== 'undefined' && servico.pais=='PAK') ? 'selected=""': '' %>>Pakistan</option>
+												<option value="PLW" <%= (typeof servico !== 'undefined' && servico.pais=='PLW') ? 'selected=""': '' %>>Palau</option>
+												<option value="PSE" <%= (typeof servico !== 'undefined' && servico.pais=='PSE') ? 'selected=""': '' %>>Palestine</option>
+												<option value="PAN" <%= (typeof servico !== 'undefined' && servico.pais=='PAN') ? 'selected=""': '' %>>Panama</option>
+												<option value="PNG" <%= (typeof servico !== 'undefined' && servico.pais=='PNG') ? 'selected=""': '' %>>Papua New Guinea</option>
+												<option value="PRY" <%= (typeof servico !== 'undefined' && servico.pais=='PRY') ? 'selected=""': '' %>>Paraguay</option>
+												<option value="PER" <%= (typeof servico !== 'undefined' && servico.pais=='PER') ? 'selected=""': '' %>>Peru</option>
+												<option value="PYF" <%= (typeof servico !== 'undefined' && servico.pais=='PYF') ? 'selected=""': '' %>>French Polynesia</option>
+												<option value="POL" <%= (typeof servico !== 'undefined' && servico.pais=='POL') ? 'selected=""': '' %>>Poland</option>
+												<option value="PRT" <%= (typeof servico !== 'undefined' && servico.pais=='PRT') ? 'selected=""': '' %>>Portugal</option>
+												<option value="PRI" <%= (typeof servico !== 'undefined' && servico.pais=='PRI') ? 'selected=""': '' %>>Puerto Rico</option>
+												<option value="QAT" <%= (typeof servico !== 'undefined' && servico.pais=='QAT') ? 'selected=""': '' %>>Qatar</option>
+												<option value="GBR" <%= (typeof servico !== 'undefined' && servico.pais=='GBR') ? 'selected=""': '' %>>United Kingdom</option>
+												<option value="CAF" <%= (typeof servico !== 'undefined' && servico.pais=='CAF') ? 'selected=""': '' %>>Central African Republic</option>
+												<option value="CZE" <%= (typeof servico !== 'undefined' && servico.pais=='CZE') ? 'selected=""': '' %>>Czech Republic</option>
+												<option value="DOM" <%= (typeof servico !== 'undefined' && servico.pais=='DOM') ? 'selected=""': '' %>>Dominican Republic</option>
+												<option value="REU" <%= (typeof servico !== 'undefined' && servico.pais=='REU') ? 'selected=""': '' %>>RÃ©union</option>
+												<option value="RWA" <%= (typeof servico !== 'undefined' && servico.pais=='RWA') ? 'selected=""': '' %>>Rwanda</option>
+												<option value="ROU" <%= (typeof servico !== 'undefined' && servico.pais=='ROU') ? 'selected=""': '' %>>Romania</option>
+												<option value="RUS" <%= (typeof servico !== 'undefined' && servico.pais=='RUS') ? 'selected=""': '' %>>Russia</option>
+												<option value="ESH" <%= (typeof servico !== 'undefined' && servico.pais=='ESH') ? 'selected=""': '' %>>Western Sahara</option>
+												<option value="WSM" <%= (typeof servico !== 'undefined' && servico.pais=='WSM') ? 'selected=""': '' %>>Samoa</option>
+												<option value="ASM" <%= (typeof servico !== 'undefined' && servico.pais=='ASM') ? 'selected=""': '' %>>American Samoa</option>
+												<option value="BLM" <%= (typeof servico !== 'undefined' && servico.pais=='BLM') ? 'selected=""': '' %>>Saint BarthÃ©lemy</option>
+												<option value="KNA" <%= (typeof servico !== 'undefined' && servico.pais=='KNA') ? 'selected=""': '' %>>Saint Kitts and Nevis</option>
+												<option value="SMR" <%= (typeof servico !== 'undefined' && servico.pais=='SMR') ? 'selected=""': '' %>>San Marino</option>
+												<option value="MAF" <%= (typeof servico !== 'undefined' && servico.pais=='MAF') ? 'selected=""': '' %>>Saint Martin (French part)</option>
+												<option value="SPM" <%= (typeof servico !== 'undefined' && servico.pais=='SPM') ? 'selected=""': '' %>>Saint Pierre and Miquelon</option>
+												<option value="VCT" <%= (typeof servico !== 'undefined' && servico.pais=='VCT') ? 'selected=""': '' %>>Saint Vincent and the Grenadines</option>
+												<option value="SHN" <%= (typeof servico !== 'undefined' && servico.pais=='SHN') ? 'selected=""': '' %>>AscensiÃ³n y TristÃ¡n de AcuÃ±a</option>
+												<option value="LCA" <%= (typeof servico !== 'undefined' && servico.pais=='LCA') ? 'selected=""': '' %>>Saint Lucia</option>
+												<option value="STP" <%= (typeof servico !== 'undefined' && servico.pais=='STP') ? 'selected=""': '' %>>Sao Tome and Principe</option>
+												<option value="SEN" <%= (typeof servico !== 'undefined' && servico.pais=='SEN') ? 'selected=""': '' %>>Senegal</option>
+												<option value="SRB" <%= (typeof servico !== 'undefined' && servico.pais=='SRB') ? 'selected=""': '' %>>Serbia</option>
+												<option value="SYC" <%= (typeof servico !== 'undefined' && servico.pais=='SYC') ? 'selected=""': '' %>>Seychelles</option>
+												<option value="SLE" <%= (typeof servico !== 'undefined' && servico.pais=='SLE') ? 'selected=""': '' %>>Sierra Leone</option>
+												<option value="SGP" <%= (typeof servico !== 'undefined' && servico.pais=='SGP') ? 'selected=""': '' %>>Singapore</option>
+												<option value="SYR" <%= (typeof servico !== 'undefined' && servico.pais=='SYR') ? 'selected=""': '' %>>Syria</option>
+												<option value="SOM" <%= (typeof servico !== 'undefined' && servico.pais=='SOM') ? 'selected=""': '' %>>Somalia</option>
+												<option value="LKA" <%= (typeof servico !== 'undefined' && servico.pais=='LKA') ? 'selected=""': '' %>>Sri Lanka</option>
+												<option value="ZAF" <%= (typeof servico !== 'undefined' && servico.pais=='ZAF') ? 'selected=""': '' %>>South Africa</option>
+												<option value="SDN" <%= (typeof servico !== 'undefined' && servico.pais=='SDN') ? 'selected=""': '' %>>Sudan</option>
+												<option value="SWE" <%= (typeof servico !== 'undefined' && servico.pais=='SWE') ? 'selected=""': '' %>>Sweden</option>
+												<option value="CHE" <%= (typeof servico !== 'undefined' && servico.pais=='CHE') ? 'selected=""': '' %>>Switzerland</option>
+												<option value="SUR" <%= (typeof servico !== 'undefined' && servico.pais=='SUR') ? 'selected=""': '' %>>Suriname</option>
+												<option value="SJM" <%= (typeof servico !== 'undefined' && servico.pais=='SJM') ? 'selected=""': '' %>>Svalbard and Jan Mayen</option>
+												<option value="SWZ" <%= (typeof servico !== 'undefined' && servico.pais=='SWZ') ? 'selected=""': '' %>>Swaziland</option>
+												<option value="TJK" <%= (typeof servico !== 'undefined' && servico.pais=='TJK') ? 'selected=""': '' %>>Tajikistan</option>
+												<option value="THA" <%= (typeof servico !== 'undefined' && servico.pais=='THA') ? 'selected=""': '' %>>Thailand</option>
+												<option value="TWN" <%= (typeof servico !== 'undefined' && servico.pais=='TWN') ? 'selected=""': '' %>>Taiwan</option>
+												<option value="TZA" <%= (typeof servico !== 'undefined' && servico.pais=='TZA') ? 'selected=""': '' %>>Tanzania</option>
+												<option value="IOT" <%= (typeof servico !== 'undefined' && servico.pais=='IOT') ? 'selected=""': '' %>>British Indian Ocean Territory</option>
+												<option value="ATF" <%= (typeof servico !== 'undefined' && servico.pais=='ATF') ? 'selected=""': '' %>>French Southern Territories</option>
+												<option value="TLS" <%= (typeof servico !== 'undefined' && servico.pais=='TLS') ? 'selected=""': '' %>>East Timor</option>
+												<option value="TGO" <%= (typeof servico !== 'undefined' && servico.pais=='TGO') ? 'selected=""': '' %>>Togo</option>
+												<option value="TKL" <%= (typeof servico !== 'undefined' && servico.pais=='TKL') ? 'selected=""': '' %>>Tokelau</option>
+												<option value="TON" <%= (typeof servico !== 'undefined' && servico.pais=='TON') ? 'selected=""': '' %>>Tonga</option>
+												<option value="TTO" <%= (typeof servico !== 'undefined' && servico.pais=='TTO') ? 'selected=""': '' %>>Trinidad and Tobago</option>
+												<option value="TUN" <%= (typeof servico !== 'undefined' && servico.pais=='TUN') ? 'selected=""': '' %>>Tunisia</option>
+												<option value="TKM" <%= (typeof servico !== 'undefined' && servico.pais=='TKM') ? 'selected=""': '' %>>Turkmenistan</option>
+												<option value="TUR" <%= (typeof servico !== 'undefined' && servico.pais=='TUR') ? 'selected=""': '' %>>Turkey</option>
+												<option value="TUV" <%= (typeof servico !== 'undefined' && servico.pais=='TUV') ? 'selected=""': '' %>>Tuvalu</option>
+												<option value="UKR" <%= (typeof servico !== 'undefined' && servico.pais=='UKR') ? 'selected=""': '' %>>Ukraine</option>
+												<option value="UGA" <%= (typeof servico !== 'undefined' && servico.pais=='UGA') ? 'selected=""': '' %>>Uganda</option>
+												<option value="URY" <%= (typeof servico !== 'undefined' && servico.pais=='URY') ? 'selected=""': '' %>>Uruguay</option>
+												<option value="UZB" <%= (typeof servico !== 'undefined' && servico.pais=='UZB') ? 'selected=""': '' %>>Uzbekistan</option>
+												<option value="VUT" <%= (typeof servico !== 'undefined' && servico.pais=='VUT') ? 'selected=""': '' %>>Vanuatu</option>
+												<option value="VEN" <%= (typeof servico !== 'undefined' && servico.pais=='VEN') ? 'selected=""': '' %>>Venezuela</option>
+												<option value="VNM" <%= (typeof servico !== 'undefined' && servico.pais=='VNM') ? 'selected=""': '' %>>Vietnam</option>
+												<option value="WLF" <%= (typeof servico !== 'undefined' && servico.pais=='WLF') ? 'selected=""': '' %>>Wallis and Futuna</option>
+												<option value="YEM" <%= (typeof servico !== 'undefined' && servico.pais=='YEM') ? 'selected=""': '' %>>Yemen</option>
+												<option value="DJI" <%= (typeof servico !== 'undefined' && servico.pais=='DJI') ? 'selected=""': '' %>>Djibouti</option>
+												<option value="ZMB" <%= (typeof servico !== 'undefined' && servico.pais=='ZMB') ? 'selected=""': '' %>>Zambia</option>
+												<option value="ZWE" <%= (typeof servico !== 'undefined' && servico.pais=='ZWE') ? 'selected=""': '' %>>Zimbabwe</option>
+											</select>
+										</div>
+									</section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="cidade" placeholder="Cidade" value="<%= (typeof servico !== 'undefined' ? servico.cidade : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o nome da Cidade</b> </label>
+                                    </section>
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="contato" placeholder="Contato" value="<%= (typeof servico !== 'undefined' ? servico.contato : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o nome do contato</b> </label>
+                                    </section>
+									
+									<div class="row">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="tipo">
+                                                    <option value="" selected="" disabled="">Tipo</option>
+                                                    <option value="PUBL" <%= (typeof servico !== 'undefined' && servico.tipo=='PUBL') ? 'selected=""': '' %>>Publico</option>
+                                                    <option value="PRIV" <%= (typeof servico !== 'undefined' && servico.tipo=='PRIV') ? 'selected=""': '' %>>Privado</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+									
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="telefone" placeholder="Telefone" value="<%= (typeof servico !== 'undefined' ? servico.telefone : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o Telefone</b> </label>
+                                    </section>
+									
+									<section>
+                                        <label class="input">
+                                            <input type="text" name="email" placeholder="Email" value="<%= (typeof servico !== 'undefined' ? servico.email : '' ) %>">
+                                            <b class="tooltip tooltip-bottom-right">Ingrese o Email</b> </label>
+                                    </section>
+									
+                                </fieldset>
+                                <footer>
+                                    <button type="submit" class="btn btn-primary">
+                                        Agregar
+                                    </button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+</div>
+<%- include ('partials/_bodyBottom'); %>	
+
+<script src="/sgbmi/js/plugin/jquery-form/jquery-form.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+	pageSetUp();
+        var errorClass = 'invalid';
+			var errorElement = 'em';
+			
+			var $addUserForm = $('#add-form').validate({
+				errorClass	: errorClass,
+				errorElement	: errorElement,
+				highlight: function(element) {
+			        $(element).parent().removeClass('state-success').addClass("state-error");
+			        $(element).removeClass('valid');
+			    },
+			    unhighlight: function(element) {
+			        $(element).parent().removeClass("state-error").addClass('state-success');
+			        $(element).addClass('valid');
+			    },
+
+			// Rules for form validation
+				rules : {
+					nome : {
+						required : true
+					},
+					estado : {
+						required : true
+					},
+					pais : {
+						required : true
+					},
+					cidade : {
+						required : true
+					},
+					contato : {
+						required : true
+					},
+					tipo : {
+						required : true
+					},
+					telefone : {
+						required : true
+					},
+					email : {
+						required : true
+					}
+				},
+		
+				messages : {
+					nome : {
+						required : "O nome e obligatorio"
+					},
+					estado : {
+						required : "O Estado e obligatorio"
+					},
+					pais : {
+						required : "O Pais e obligatorio"
+					},
+					cidade : {
+						required : "A cidade e obligatoria"
+					},
+					contato : {
+						required : "O contato e obligatorio"
+					},
+					tipo : {
+						required : "O tipo e obligatorio"
+					},
+					telefone : {
+						required : "O telefone e obligatorio"
+					},
+					email : {
+						required : "O email e obligatorio"
+					}
+				},
+		
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.parent());
+				}
+			});
+
+	
+		$("[name='nome']").get(0).focus();
+	
+	});
+	
+</script>
+<%- include ('partials/_footer'); %>

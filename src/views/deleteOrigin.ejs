@@ -1,0 +1,74 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>	
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-fw fa-user"></i> 
+					Configuracoes 
+				<span>> 
+					Borrar Origens
+				</span>
+			</h1>
+		</div>
+    </div>
+    
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                        <h2>Complete el formulario </h2>				
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox">
+                        </div>
+                        <div class="widget-body no-padding">
+                            <form id="addUser-form" class="smart-form" novalidate="novalidate" method="POST">
+                                <fieldset>
+                                    <section>
+                                        <label class="input">
+                                            <input type="text" name="nome" placeholder="Nombre da mostra" value="<%= origen.nome %>" readonly>
+                                            <b class="tooltip tooltip-bottom-right">Ingrese seu nombre</b> </label>
+                                    </section>
+
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <select name="usua_estado" readonly>
+                                                    <option value="" disabled="">Estado</option>
+                                                    <option value="true" <%= origen.estado ? 'selected=""': '' %> >Activo</option>
+                                                    <option value="false" <%= !origen.estado ? 'selected=""': '' %> >Inactivo</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+                                </fieldset>
+                                <footer>
+                                    <button type="submit" class="btn btn-primary">
+                                        Eliminar
+                                    </button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+<%- include ('partials/_bodyBottom'); %>	
+
+<script>
+	$(document).ready(function() {
+	
+	
+		pageSetUp();
+        
+		
+	
+	});
+	
+</script>
+<%- include ('partials/_footer'); %>

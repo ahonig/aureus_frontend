@@ -1,0 +1,12 @@
+<%
+
+__i18n = function(key) {
+	console.log("Key ", key);
+	console.log("Lang: ", lang);
+        if (typeof lang == 'undefined') return key;
+        if (lang == 'pt' || lang == 'br') return key;
+        if (typeof translation[lang][key] == 'undefined') return key;
+        return translation[lang][key];
+}
+
+%>

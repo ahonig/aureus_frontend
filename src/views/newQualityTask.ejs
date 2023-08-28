@@ -1,0 +1,295 @@
+<%- include ('partials/_header'); %>
+<%- include ('partials/_navMenu'); %>
+<%- include ('partials/_bodyUpper'); %>  
+<div id="content">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+      <h1 class="page-title txt-color-blueDark">
+        <i class="fa fa-fw fa-list"></i> 
+          Sequências 
+        <span data-i18n-key="Tarefas">> 
+           Tarefas
+        </span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- widget grid -->
+  <section id="widget-grid" class="">
+        
+    <!-- row -->
+    <div class="row">
+  
+      <!-- NEW WIDGET START -->
+      <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+        <header>
+          <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+          <h2 data-i18n-key="Tarefa">Tarefa </h2>
+        </header>
+        <!-- widget div-->
+        <div>
+
+                  <!-- widget edit box -->
+                  <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+        
+                  </div>
+                  <!-- end widget edit box -->
+        
+                  <!-- widget content -->
+                  <div class="widget-body">
+        
+                    <div class="row">
+                      <form id="wizard-1" novalidate="novalidate" method="post">
+                        <div id="bootstrap-wizard-1" class="col-sm-12">
+                          <div class="form-bootstrapWizard">
+                            <ul class="bootstrapWizard form-wizard">
+                              <li class="active" data-target="#step1">
+                                <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title" data-i18n-key="TipoTarefa">Tipo do tarefa</span> </a>
+                              </li>
+                              <li data-target="#step2">
+                                <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title" data-i18n-key="Sequencias">Sequencias</span> </a>
+                              </li>
+                              <li data-target="#step3">
+                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title" data-i18n-key="Confirmacao">Confirmacao</span> </a>
+                              </li>
+                              <li data-target="#step4">
+								<a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title" data-i18n-key="Fin">Fin</span> </a>
+                              </li>
+
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+                              <br>
+                              <h3><strong data-i18n-key="Paso1">Paso 1 </strong> - <span data-i18n-key="SeleccioneTarefa">Seleccione sua tarefa</span></h3>
+                      <div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-sliders fa-lg fa-fw"></i></span>
+        <select id="tarefa" name="tarefa" class="form-control input-lg">
+          <option value="QUA" selected="selected" data-i18n-key="ControlQualidade">Control do Qualidade</option>
+          <option value="ENS" data-i18n-key="MontadoEnsamblado">Montado/Ensamblado</option>
+          <option value="TODOS" data-i18n-key="Todas">Todas</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+  
+                              
+        
+                            </div>
+                            <div class="tab-pane" id="tab2">
+                              <br>
+                              <h3><strong data-i18n-key="Paso2">Paso 2</strong> - <span data-i18n-key="Relatorio">Selecione suas Sequencias</span></h3>
+        
+                              <div class="row">
+                                <!-- Widget ID (each widget will need unique ID)-->
+        
+                <!-- widget div-->
+                <div>
+        
+                  <!-- widget content -->
+                  <div class="widget-body">
+                    <select multiple="multiple" size="10" name="sequenciaId[]" id="initializeDuallistbox">                      
+                     <% for(var i =0; i < sequencia.length; i++){ 
+              		if ( typeof(sequencia[i].arquivofastqr1) !== "undefined" && sequencia[i].arquivofastqr1 !== null ){
+              	     %>
+        <option value="<%= sequencia[i]._id %>" >#<%= sequencia[i]._id %>-<%= sequencia[i].microorganismoIdSuspeito.especie %>-<%= sequencia[i].mostraId.nome %></option>
+                     <% }} %>
+                   </select>
+       
+                  </div>
+                  <!-- end widget content -->
+        
+                </div>
+                <!-- end widget div -->
+                  
+            </div>
+                              
+         </div>
+                            <div class="tab-pane" id="tab3">
+                              <br>
+                              <h3><strong data-i18n-key="Paso3">Paso 3</strong> - <span data-i18n-key="Confirmacao">Confirmacao</span></h3>
+                              <br>
+                              <h3 data-i18n-key="Resumo">Resumo: </h3>
+			      <p id="resumedata"></p>
+                              <h4 class="text-center" data-i18n-key="CliqueSgte">Clique em Sgte. para a confirmacao</h4>
+                              <br>
+                              <br>
+                            </div>
+                            
+                            <div class="tab-pane" id="tab4">
+                                      <br>
+                                      <h3><strong>Paso 4</strong> - Fin</h3>
+                                      <br>
+                                      <h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Succeso!</strong></h1>
+									  <h1 class="text-center" data-i18n-key="Relatorio">Você receberá um alerta por e-mail quando terminar.<h1>
+                                      <br>
+                            </div>
+  
+                            <div class="form-actions">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <ul class="pager wizard no-margin">
+                                    <!--<li class="previous first disabled">
+                                    <a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+                                    </li>-->
+                                    <li class="previous disabled">
+                                      <a href="javascript:void(0);" class="btn btn-lg btn-default"> Ant. </a>
+                                    </li>
+                                    <!--<li class="next last">
+                                    <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+                                    </li>-->
+                                    <li class="next">
+                                      <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Sgte. </a>
+                                    </li>
+                                    <li id="confirmar" style="display:none" class="">
+                                          <a href="#" onclick="location.reload(true); return false;" class="btn btn-lg txt-color-darken" data-i18n-key="Confirmar"> Confirmar </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+        
+                  </div>
+                  <!-- end widget content -->
+        
+                </div>
+                <!-- end widget div -->
+        
+      </div>
+      <!-- WIDGET END -->
+  
+    </div>
+  
+    <!-- end row -->
+  
+  </section>
+  <!-- end widget grid -->
+
+</div>
+<%- include ('partials/_bodyBottom'); %>  
+
+<script src="/sgbmi/js/plugin/datatables/jquery.dataTables.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/dataTables.colVis.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/dataTables.buttons.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/buttons.bootstrap.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/jszip.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/pdfmake.min.js"></script>
+<script src="/sgbmi/js/plugin/datatables/vfs_fonts.js"></script>
+<script src="/sgbmi/js/plugin/datatables/buttons.html5.min.js"></script>
+<script src="/sgbmi/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+<script src="/sgbmi/js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="/sgbmi/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<script src="/sgbmi/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>    
+
+<script>
+  $(document).ready(function() {
+    pageSetUp();
+    var responsiveHelper_datatable_tabletools = undefined;
+    var breakpointDefinition = {
+      tablet : 1024,
+      phone : 480
+    };
+
+    //Bootstrap Wizard Validations
+
+        var $validator = $("#wizard-1").validate({
+          
+          rules: {
+        "sequenciaId[]": "required"
+          },
+          
+          messages: {
+        "sequenciaId[]": "Deve selecionar pelo menos um"
+          },
+          
+          highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+          },
+          unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+          },
+          errorElement: 'span',
+          errorClass: 'help-block',
+          errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+              error.insertAfter(element.parent());
+            } else {
+              error.insertAfter(element);
+            }
+          }
+        });
+        
+        $('#bootstrap-wizard-1').bootstrapWizard({
+          'tabClass': 'form-wizard',
+          'onNext': function (tab, navigation, index) {
+        	var $valid = $("#wizard-1").valid();
+	        if ( index== 2 && $("#initializeDuallistbox :selected").length == 0 ) {
+          		alert("Deve selecionar pelo menos um");
+          		return false;
+          	} 
+            if (!$valid) {
+              $validator.focusInvalid();
+              return false;
+            } else {
+              $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass('complete');
+              $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step').html('<i class="fa fa-check"></i>');
+            }
+        
+          },
+          'onTabShow': function (tab, navigation, index) { 
+
+		if ( index == 3) {
+                	$("#confirmar").show();
+			$(".next").css("display","none");
+			setTimeout(function(){ confirmar(); }, 5000);	
+
+                } else {
+                        $("#confirmar").css('display','none');
+			$(".next").show();
+                }
+		if (index == 2 ){
+			var taskType = $('#tarefa').find(":selected").text();
+			var selectedSequences = $('#initializeDuallistbox').find(":selected").text();
+	                $("#resumedata").html(taskType + "<br>" + selectedSequences);
+
+		}
+	  }
+        });
+
+	$("#confirmar").click(function(){
+		confirmar();
+	}); 
+
+  });
+
+
+  var initializeDuallistbox = $('#initializeDuallistbox').bootstrapDualListbox({
+            nonSelectedListLabel: 'Sequências disponibles',
+            selectedListLabel: 'Sequências seleccionadas',
+            preserveSelectionOnMove: 'moved',
+            moveOnSelect: false,
+            nonSelectedFilter: '',
+      	    infoText: 'Mostrando tudo {0}',
+      	    infoTextEmpty: 'Lista vazia',
+            infoTextFiltered: '<span class="label label-warning">filtrado</span> {0} a partir de {1}'
+          });
+  
+  function confirmar(){
+
+    $("#wizard-1").submit();
+
+  }
+</script>
+<%- include ('partials/_footer'); %>
